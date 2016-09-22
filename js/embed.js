@@ -1,2 +1,2023 @@
-!function(a,b){var c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P={},Q={},R={},S={},T={},U={},V={},W={};c=O=function(a,b){return Object.prototype.hasOwnProperty.call(a,b)},d=function(){return function(a,b){var c=a.length,d=Array.prototype.forEach;if(isNaN(c))for(var e in a)O(a,e)&&b(a[e],e,a);else if(d)d.call(a,b);else for(var f=0;c>f;f++)b(a[f],f,a)}}(),e=function(){var a=0;return function(b){var c=String(++a);return b?b+c:c}}(),f=function(){var a=d,b=c,f=e,g=function(a){var b,c=!1;return function(){return c?b:(c=!0,b=a.apply(this,arguments),a=null,b)}},h=Object.keys||function(a){if(a!==Object(a))throw new TypeError("Invalid object");var c=[];for(var d in a)b(a,d)&&(c[c.length]=d);return c},i=[].slice,j={on:function(a,b,c){if(!l(this,"on",a,[b,c])||!b)return this;this._events=this._events||{};var d=this._events[a]||(this._events[a]=[]);return d.push({callback:b,context:c,ctx:c||this}),this},once:function(a,b,c){if(!l(this,"once",a,[b,c])||!b)return this;var d=this,e=g(function(){d.off(a,e),b.apply(this,arguments)});return e._callback=b,this.on(a,e,c)},off:function(a,b,c){var d,e,f,g,i,j,k,m;if(!this._events||!l(this,"off",a,[b,c]))return this;if(!a&&!b&&!c)return this._events={},this;for(g=a?[a]:h(this._events),i=0,j=g.length;j>i;i++)if(a=g[i],f=this._events[a]){if(this._events[a]=d=[],b||c)for(k=0,m=f.length;m>k;k++)e=f[k],(c&&c!==e.context||b&&b!==e.callback&&b!==e.callback._callback)&&d.push(e);d.length||delete this._events[a]}return this},trigger:function(a){if(!this._events)return this;var b=i.call(arguments,1);if(!l(this,"trigger",a,b))return this;var c=this._events[a],d=this._events.all;return c&&m(c,b),d&&m(d,arguments),this},stopListening:function(a,b,c){var d=this._listeners;if(!d)return this;var e=!b&&!c;"object"==typeof b&&(c=this),a&&((d={})[a._listenerId]=a);for(var f in d)d[f].off(b,c,this),e&&delete this._listeners[f];return this}},k=/\s+/,l=function(a,b,c,d){if(!c)return!0;if("object"==typeof c){for(var e in c)a[b].apply(a,[e,c[e]].concat(d));return!1}if(k.test(c)){for(var f=c.split(k),g=0,h=f.length;h>g;g++)a[b].apply(a,[f[g]].concat(d));return!1}return!0},m=function(a,b){var c,d=-1,e=a.length,f=b[0],g=b[1],h=b[2];switch(b.length){case 0:for(;++d<e;)(c=a[d]).callback.call(c.ctx);return;case 1:for(;++d<e;)(c=a[d]).callback.call(c.ctx,f);return;case 2:for(;++d<e;)(c=a[d]).callback.call(c.ctx,f,g);return;case 3:for(;++d<e;)(c=a[d]).callback.call(c.ctx,f,g,h);return;default:for(;++d<e;)(c=a[d]).callback.apply(c.ctx,b)}},n={listenTo:"on",listenToOnce:"once"};return a(n,function(a,b){j[b]=function(b,c,d){var e=this._listeners||(this._listeners={}),g=b._listenerId||(b._listenerId=f("l"));return e[g]=b,"object"==typeof c&&(d=this),b[a](c,d,this),this}}),j.bind=j.on,j.unbind=j.off,j}(),g=function(a){return"[object Function]"===Object.prototype.toString.call(a)},h=function(a){return"[object String]"===Object.prototype.toString.call(a)},i=function(a){return function(b){return a(Array.prototype.slice.call(arguments,1),function(a){for(var c in a)O(a,c)&&(b[c]=a[c])}),b}}(d),j=function(){function a(a){return a.replace(/\s+/g,"").toLowerCase()}var b=d,c=g,e=h,f=i;return function(d,g,h){var i={};e(g)?i[g]=h:i=g;var j=f({},i);b(j,function(b,c){var d=a(c);d!==c&&(delete j[c],j[d]=b),null===b&&(j[d]=""),void 0===b&&delete j[d]});var k=d.style;if(!c(k.setProperty)){var l={};b(k.cssText.split(";"),function(b){if(b){var c=b.split(":"),d=c.shift(),e=c.join(":");l[a(d)]=e}});var m=f({},l,j),n=[];return b(m,function(a,b){""!==a&&n.push(/!important/i.test(a)?b+":"+a:b+":"+a+" !important")}),void(k.cssText=n.join(";"))}b(j,function(a,b){k.setProperty(b,String(a),"important")})}}(),k=function(a,b,c){if(a.addEventListener)a.addEventListener(b,c,!1);else{if(!a.attachEvent)throw new Error("No event support.");a.attachEvent("on"+b,c)}},l=function(a,b,c){if(a.removeEventListener)a.removeEventListener(b,c,!1);else{if(!a.detachEvent)throw new Error("No event support.");a.detachEvent("on"+b,c)}},m=function(b,c,d){d||(d=0);var e,f,g,h,i=0,j=function(){i=new Date,g=null,h=b.apply(e,f)};return function(){var k=new Date,l=c-(k-i);return e=this,f=arguments,0>=l?(a.clearTimeout(g),g=null,i=k,h=b.apply(e,f)):g||(g=a.setTimeout(j,l+d)),h}},P=function(b){function d(a){return t.getElementById(a)||t.body||t.documentElement}var g=f,n=j,p=h,q=c,r=i,s=e,t=a.document,u={},v=t.createElement("a");b.getOffset=function(a,b){b=b||t.documentElement;for(var c=a,d=0,e=0;c&&c!==b;)d+=c.offsetLeft,e+=c.offsetTop,c=c.offsetParent;return{top:e,left:d,height:a.offsetHeight,width:a.offsetWidth}},b.getHost=function(a){return v.href=a,v.hostname},b.addEvent=k,b.removeEvent=l,b.throttle=m,b.addEvent(a,"message",function(a){var c,d=o;try{c=d.parse(a.data)}catch(e){return}var f=c.sender,g=q(u,f)&&u[f];g&&b.getHost(a.origin)===g.host&&(a.origin!==g.origin&&(g.origin=a.origin),"host"===c.scope&&g.trigger(c.name,c.data))},!1),b.addEvent(a,"hashchange",function(){b.trigger("window.hashchange",{hash:a.location.hash})},!1),b.addEvent(a,"resize",b.throttle(function(){b.trigger("window.resize")},250,50),!1),b.addEvent(t,"mousemove",b.throttle(function(){b.trigger("window.mousemove")},250,50),!1);var w=function(){b.trigger("window.scroll")};b.addEvent(a,"scroll",b.throttle(w,250,50)),b.addEvent(t,"click",function(){b.trigger("window.click")});var x=b.WindowBase=function(a){a=a||{},this.state=x.INIT,this.uid=a.uid||s("dsq-frame"),this.origin=a.origin,this.host=b.getHost(this.origin),this.target=a.target,this.window=null,u[this.uid]=this,this.on("ready",function(){this.state=x.READY},this),this.on("die",function(){this.state=x.KILLED},this)};r(x,{INIT:0,READY:1,KILLED:2,postMessage:function(a,b,c){return a.postMessage(b,c)}}),r(x.prototype,g),x.prototype.requiresWindow=function(b){var c=this;return function(){var d=Array.prototype.slice.call(arguments),e=function(){var f=c.window;f?b.apply(c,d):a.setTimeout(e,500)};c.isReady()?e():c.on("ready",e)}},x.prototype.sendMessage=function(a,b){var c=o,d=c.stringify({scope:"client",name:a,data:b});this.requiresWindow(function(a){x.postMessage(this.window,a,this.origin)})(d)},x.prototype.hide=function(){},x.prototype.show=function(){},x.prototype.url=function(){return this.target},x.prototype.destroy=function(){this.state=x.KILLED,this.off()},x.prototype.isReady=function(){return this.state===x.READY},x.prototype.isKilled=function(){return this.state===x.KILLED};var y=b.Popup=function(a){a.uid=a.windowName,x.call(this,a)};r(y.prototype,x.prototype),y.prototype.load=function(){var b=this.window=a.open("",this.uid||"_blank");b.location=this.url()},y.prototype.isKilled=function(){return x.prototype.isKilled()||this.window.closed};var z=b.Iframe=function(a){x.call(this,a),this.styles=a.styles||{},this.tabIndex=a.tabIndex||0,this.title=a.title||"Disqus",this.container=a.container,this.elem=null};r(z.prototype,x.prototype),z.prototype.load=function(){var a=this.elem=t.createElement("iframe");a.setAttribute("id",this.uid),a.setAttribute("name",this.uid),a.setAttribute("allowTransparency","true"),a.setAttribute("frameBorder","0"),a.setAttribute("scrolling","no"),this.role&&a.setAttribute("role",this.role),a.setAttribute("tabindex",this.tabIndex),a.setAttribute("title",this.title),this.setInlineStyle(this.styles)},z.prototype.getOffset=function(a){return b.getOffset(this.elem,a)},z.prototype.setInlineStyle=function(a,b){return n(this.elem,a,b)},z.prototype.removeInlineStyle=function(a){var b=this.elem.style;return"removeProperty"in b?void b.removeProperty(a):void(b[a]="")},z.prototype.hide=function(){this.setInlineStyle("display","none")},z.prototype.show=function(){this.removeInlineStyle("display")},z.prototype.destroy=function(){return this.elem&&this.elem.parentNode&&(this.elem.parentNode.removeChild(this.elem),this.elem=null),x.prototype.destroy.call(this)};var A=b.Channel=function(a){var b=this;b.window=null,z.call(b,a),this.insertBeforeEl=a.insertBeforeEl,this.insertAfterEl=a.insertAfterEl,b.styles=r({width:"1px","min-width":"100%",border:"none",overflow:"hidden",height:"0"},a.styles||{})};r(A.prototype,z.prototype),A.prototype.load=function(a){var c=this;z.prototype.load.call(c);var e=c.elem;e.setAttribute("width","100%"),e.setAttribute("src",this.url()),b.addEvent(e,"load",function(){c.window=e.contentWindow,a&&a()});var f=p(c.container)?d(c.container):c.container,g=(c.insertAfterEl?c.insertAfterEl.nextSibling:c.insertBeforeEl)||null;f.insertBefore(e,g)},A.prototype.destroy=function(){return this.window=null,z.prototype.destroy.call(this)};var B=b.Sandbox=function(a){z.call(this,a),this.contents=a.contents||"",this.styles=r({width:"100%",border:"none",overflow:"hidden"},a.styles||{})};return r(B.prototype,z.prototype),B.prototype.load=function(){z.prototype.load.call(this);var a=this.elem,b=p(this.container)?d(this.container):this.container;b.appendChild(a),this.window=a.contentWindow;try{this.window.document.open()}catch(c){a.src='javascript:var d=document.open();d.domain="'+t.domain+'";void(0);'}return this.document=this.window.document,this.document.write(this.contents),this.document.close(),this.updateHeight(),this},B.prototype.updateHeight=function(){var a,b=this.document.body;b&&(a=b.offsetHeight+"px",this.setInlineStyle({height:a,"min-height":a,"max-height":a}))},B.prototype.show=function(){this.setInlineStyle("display","block")},B.prototype.click=function(a){var c=this,d=c.document.body;b.addEvent(d,"click",function(b){a.call(c,b)})},B.prototype.setBodyClass=function(a){this.document.body.className=a},b.on=g.on,b.off=g.off,b.trigger=g.trigger,b}(P),n=function(){var b=P,c=new b.Sandbox({container:"disqus_thread",styles:{display:"none"}}).load();return function(b){try{return c.window[b]||a[b]}catch(d){return a[b]}}}(),o=function(){var b,c=n;return b="[object JSON]"===a.Object.prototype.toString.call(a.JSON)?a.JSON:c("JSON"),b?b:{}}(),Q=function(a){var c=d;return a=function(a){var d=[];return c(a,function(a,c){a!==b&&d.push(c+(null===a?"":"="+encodeURIComponent(a)))}),d.join("&")}}(Q),R=function(a){var b=Q;return a=function c(a,d,e){if(d&&(-1===a.indexOf("?")?a+="?":"&"!==a.charAt(a.length-1)&&(a+="&"),a+=b(d)),e){var f={};return f[(new Date).getTime()]=null,c(a,f)}var g=a.length;return"&"===a.charAt(g-1)?a.slice(0,g-1):a}}(R),S=function(a){var b=R,c=document.head||document.getElementsByTagName("head")[0]||document.body;return a=function(a,d,e){var f=document.createElement("script");f.src=b(a,d,e),f.async=!0,f.charset="UTF-8",c.appendChild(f)}}(S),p=function(){function b(a){return a.replace(/\s+/g,"").toLowerCase()}function c(a){return a=a.replace(/^#([a-f0-9])([a-f0-9])([a-f0-9])$/,"#$1$1$2$2$3$3"),a=a.slice(1),{red:parseInt(a.slice(0,2),16),green:parseInt(a.slice(2,4),16),blue:parseInt(a.slice(4,6),16)}}function d(a){var b=a.match(/^rgb\((\d+),(\d+),(\d+)\)$/);return{red:parseInt(b[1],10),green:parseInt(b[2],10),blue:parseInt(b[3],10)}}function e(a){var b=a.match(/^rgba\((\d+),(\d+),(\d+),([\d.]+)\)$/);return{red:parseInt(b[1],10),green:parseInt(b[2],10),blue:parseInt(b[3],10),alpha:parseFloat(b[4])}}function f(a,b,c,d){return b=document.createElement(b),h(b,{visibility:"hidden",color:c}),a.appendChild(b),c=d(b),a.removeChild(b),c}function g(c,e){e=e||{};var g=e.container||document.body;return a.getComputedStyle?(c=f(g,"span",c,function(b){return a.getComputedStyle(b,null).getPropertyValue("color")}),d(b(c))):(c=f(g,"textarea",c,function(a){return a.createTextRange().queryCommandValue("ForeColor")}),{red:255&c,blue:c>>>16,green:(65280&c)>>>8})}var h=j;return function(a,f){a=b(a);var h;if("transparent"===a)return{red:0,green:0,blue:0,alpha:0};if("#"===a.charAt(0))h=c;else if("rgba("===a.slice(0,5))h=e;else if("rgb("===a.slice(0,4))h=d;else{if(!/^[a-z]+$/.test(a))throw new Error("parseColor received unparseable color: "+a);h=g}return h(a,f)}}(),q=function(){function c(a){if(!a||"embed.js"!==a.substring(a.length-8))return null;for(var b,c=[/(https?:)?\/\/(www\.)?disqus\.com\/forums\/([\w_\-]+)/i,/(https?:)?\/\/(www\.)?([\w_\-]+)\.disqus\.com/i,/(https?:)?\/\/(www\.)?dev\.disqus\.org\/forums\/([\w_\-]+)/i,/(https?:)?\/\/(www\.)?([\w_\-]+)\.dev\.disqus\.org/i],d=c.length,e=0;d>e;e++)if(b=a.match(c[e]),b&&b.length&&4===b.length)return b[3];return null}function d(a,b){var d,e,f,g=a.getElementsByTagName("script"),h=g.length;b=b||c;for(var i=h-1;i>=0;i--)if(d=g[i],e=d.getAttribute?d.getAttribute("src"):d.src,f=b(e),null!==f)return f.toLowerCase();return null}function e(a,b){var c,d,e=0,f=new Array(a.length);for(c=0;c<=a.length;c++)for(f[c]=new Array(b.length),d=0;d<=b.length;d++)f[c][d]=0;for(c=0;c<a.length;c++)for(d=0;d<b.length;d++)a[c]===b[d]&&(f[c+1][d+1]=f[c][d]+1,f[c+1][d+1]>e&&(e=f[c+1][d+1]));return e}function f(){for(var a=y.getElementsByTagName("h1"),c=y.title,d=c.length,f=c,g=.6,h=function(a){var h,i=a.textContent||a.innerText;null!==i&&i!==b&&(h=e(c,i)/d,h>g&&(g=h,f=i))},i=0;i<a.length;i++)h(a[i]);return f}function g(a){return a.toLowerCase().replace(/^\s+|\s+$/g,"").replace(/['"]/g,"")}function i(a){var b=0,c=1,d=2;if(!a.postMessage)return c;if(!a.JSON)return"Microsoft Internet Explorer"===a.navigator.appName?d:c;try{a.postMessage("ping","*")}catch(e){return d}return b}function j(b){(new a.Image).src=v(x+"/stat.gif",{event:b})}function k(b){(new a.Image).src=v(x+"/event.gif",b)}function l(b,c,d){return a.getComputedStyle?y.defaultView.getComputedStyle(b,null).getPropertyValue(c):b.currentStyle?b.currentStyle[c]||b.currentStyle[d]:void 0}function m(a,b,c){if(c=c||b,a===y)return"";var d=l(a,b,c);return""===d||/color/i.test(b)&&0===u(d).alpha?m(a.parentNode,b,c)||d:d||null}function n(a,b,c,d){t(b)&&(b=y.createElement(b));var e=null;return b.style.visibility="hidden",a.appendChild(b),e=m(b,c,d),a.removeChild(b),e}function o(a){for(var b,c=n(a,"span","font-family","fontFamily"),d=c.split(","),e={courier:1,times:1,"times new roman":1,georgia:1,palatino:1,serif:1},f=0;f<d.length;f++)if(b=g(d[f]),e.hasOwnProperty(b))return!0;return!1}function q(a){var b=y.createElement("a");return b.href=Number(new Date),u(n(a,b,"color"),{container:a})}function r(a){var b=a.red,c=a.green,d=a.blue;if(a.hasOwnProperty("alpha")){var e=a.alpha,f=function(a){return Math.round(a*e+255*(1-e))};b=f(b),c=f(c),d=f(d)}return(299*b+587*c+114*d)/1e3}function s(a){var b=n(a,"span","background-color","backgroundColor"),c=u(b,{container:a});return 0===c.alpha?"light":r(c)<128?"dark":"light"}var t=h,u=p,v=R,w=P,x="https://referrer.disqus.com/juggler",y=a.document,z=function(){var a,b,c=function(){return!1};if("hidden"in y)a="hidden",b="visibilitychange";else{if(!("webkitHidden"in y))return{isHidden:c,listen:c,stopListening:c};a="webkitHidden",b="webkitvisibilitychange"}return{isHidden:function(){return y[a]},listen:function(a){return w.addEvent(y,b,a)},stopListening:function(a){return w.removeEvent(y,b,a)}}}(),A=function(){var a=y.createElement("div");a.style.visibility="hidden",a.style.width="100px",a.style.msOverflowStyle="scrollbar",y.body.appendChild(a);var b=a.offsetWidth;a.style.overflow="scroll";var c=y.createElement("div");c.style.width="100%",a.appendChild(c);var d=c.offsetWidth;return a.parentNode.removeChild(a),b-d},B=function(a){var b=a.split("."),c=b.length>2?b[b.length-2]:"";return c.match(/^[0-9a-f]{32}$/i)&&c},C={isIE:function(){return Boolean(y.documentMode)},isSafari:function(){var b=a.navigator.userAgent.toLowerCase();return b.indexOf("safari")>-1&&-1===b.indexOf("chrome")}},D={getItem:function(b){try{return a.localStorage.getItem(b)}catch(c){}},setItem:function(b,c){try{return a.localStorage.setItem(b,c)}catch(d){}}},E=function(){var a=!1;return a||"https:"===y.location.protocol},F=1,G=function(a){if(a.nodeType===F){var b=l(a,"max-height","maxHeight"),c=l(a,"overflow-y","overflowY");return b&&"none"!==b&&c&&"visible"!==c}},H=4,I=function(a){return a.nodeType===F?a.scrollHeight-a.clientHeight>H:void 0},J=function(){if(y.querySelector){var a=y.querySelector("link[rel=canonical]");if(a)return a.href}};return{MAX_Z_INDEX:2147483647,getShortnameFromUrl:c,getForum:d,guessThreadTitle:f,getContrastYIQ:r,getColorScheme:s,getElementStyle:n,getAnchorColor:q,normalizeFontValue:g,isSerif:o,getBrowserSupport:i,logStat:j,reportJester:k,getComputedStyle:l,pageVisibility:z,getScrollbarWidth:A,getLoaderVersionFromUrl:B,browser:C,storage:D,defaultProtocol:E()?"https:":"http:",appearsToHideContent:G,hasOverflow:I,getCanonicalUrl:J}}(),r=function(){var a=d,c=q,e=function(a,c){this.win=a,this.configurator=c,this.config={page:{url:b,title:b,slug:b,category_id:b,identifier:b,language:b,api_key:b,remote_auth_s3:b,author_s3:b},experiment:{enable_scroll_container:!0,force_auto_styles:b,sort_order:b},server_side:{service:"static",experiment:"default",variant:"control",top_placement_url:b,bottom_placement_url:b,forum_id:b},discovery:{disable_all:b,disable_promoted:b,sponsored_comment_id:b,preview:!1,adsFixture:b,pdFixture:b},strings:b,sso:{},callbacks:{preData:[],preInit:[],onInit:[],afterRender:[],onReady:[],onNewComment:[],preReset:[],onPaginate:[],onIdentify:[],beforeComment:[]}}};e.DISQUS_GLOBALS=["shortname","identifier","url","title","category_id","slug"];var f=e.prototype;return f.getContainer=function(){var a=this.win;return a.document.getElementById(a.disqus_container_id||"disqus_thread")},f.runConfigurator=function(){var a=this.configurator||this.win.disqus_config;if("function"==typeof a)try{a.call(this.config)}catch(b){}},f.getValuesFromGlobals=function(){var b,d=this.win,f=this.config,g=f.page;a(e.DISQUS_GLOBALS,function(a){var b=d["disqus_"+a];"undefined"!=typeof b&&(g[a]=b)}),this.runConfigurator(),f.forum||(b=g.shortname,f.forum=b?b.toLowerCase():c.getForum(d.document))},f.toJSON=function(){var a=this.win,b=this.config,d=b.page,e=this.getContainer();return this.getValuesFromGlobals(),{container:e,forum:b.forum,sortOrder:b.experiment.sort_order||c.storage.getItem("disqus.sort")||"default",language:b.language,typeface:c.isSerif(e)?"serif":"sans-serif",anchorColor:c.getAnchorColor(e),colorScheme:c.getColorScheme(e),canonicalUrl:c.getCanonicalUrl(),url:d.url||a.location.href.replace(/#.*$/,""),title:d.title,documentTitle:c.guessThreadTitle(),slug:d.slug,category:d.category_id,identifier:d.identifier,discovery:b.discovery,experimentName:b.server_side.experiment,experimentVariant:b.server_side.variant,experimentService:b.server_side.service,forumId:b.server_side.forum_id,topPlacementUrl:b.server_side.top_placement_url,bottomPlacementUrl:b.server_side.bottom_placement_url,apiKey:d.api_key,remoteAuthS3:d.remote_auth_s3,sso:b.sso,unsupported:c.getBrowserSupport(a),callbacks:b.callbacks,enableScrollContainer:b.experiment.enable_scroll_container,forceAutoStyles:b.experiment.force_auto_styles}},{HostConfig:e}}(),s=function(){var b;return b=a.console?"function"==typeof a.console.log?function(){return a.console.log(Array.prototype.slice.call(arguments,0).join(" "))}:function(){return a.console.log.apply(a.console,arguments)}:function(){},{log:b}}(),t=function(){function b(b){b=b||{};var c=b.Math||a.Math,d=b.Date||a.Date;try{var e=(new d).getTimezoneOffset(),f=1,g=a.screen;g&&g.availWidth?f=g.availWidth*g.availHeight+g.colorDepth:g&&g.width&&(f=g.width*g.height);var h=document.documentElement,i=h.clientWidth*h.clientHeight;return c.abs(17*e+25*f-i)}catch(j){return 1}}return{get:b}}(),u=function(b){function c(b){b=b||{};var c=b.Uint32Array||a.Uint32Array,d=b.crypto||a.crypto,e=b.Math||a.Math;try{var f=new c(1);return d.getRandomValues(f)[0]}catch(g){return e.floor(1e9*e.random())}}function d(){var b=a.performance,c=b&&b.timing;if(!c)return 1e5;var d=c.domainLookupEnd-c.domainLookupStart,e=c.connectEnd-c.connectStart,f=c.responseStart-c.navigationStart;return 11*d+13*e+17*f}function e(e){e=e||{};var f=e.Math||a.Math,g=Number((new Date).getTime().toString().substring(3)),h=f.abs(g+d()-b.get()).toString(32);return h+=c().toString(32)}return{generate:e}}(t),v=function(a){return Boolean(a&&(a.offsetWidth||a.offsetHeight||a.getClientRects().length))},w=function(a){try{return a.self!==a.top}catch(b){return!0}},x=function(b,c,d){var e=function(){var f=b();return f?void c(f):void a.setTimeout(e,d)};e()},y=function(b,c,d){var e,f,g,h,i,j=function(){var k=(new Date).getTime()-h;c>k&&k>=0?e=a.setTimeout(j,c-k):(e=null,d||(i=b.apply(g,f),e||(g=f=null)))};return function(){g=this,f=arguments,h=(new Date).getTime();var k=d&&!e;return e||(e=a.setTimeout(j,c)),k&&(i=b.apply(g,f),g=f=null),i}},z=function(){var a=document.body,b=document.documentElement;return function(){return Math.max(a.scrollHeight,a.offsetHeight,b.clientHeight,b.scrollHeight,b.offsetHeight)}}(),A=function(){var a=i,b=R,c="default",d={lounge:"http://disqus.com/embed/comments/",home:"https://disqus.com/home/".replace("home/","")},e=function(a,b){return/^http/.test(b)||(b="http:"),b+"//"+a.replace(/^\s*(\w+:)?\/\//,"")},f=function(f,g,h){var i=d[f];if(!i)throw new Error("Unknown app: "+f);var j=e(i,document.location.protocol),k=a({base:c},g||{}),l=h?"#"+encodeURIComponent(JSON.stringify(h)):"";return b(j,k)+l};return{BASE:c,apps:d,get:f,ensureHttpBasedProtocol:e}}(),B=function(){var b=f,d=y,g=z,h=v,j=i,k=c,l=e,m=A,n=P,o=q,p=a.document,r=p.documentElement,s=p.location.protocol,t=function(a){this.uid=l("dsq-app"),this.settings=a||{};var b=[],c=this.constructor.prototype;do b.unshift(c),c=c.constructor.__super__;while(c);for(var d=0,e=b.length;e>d;d++)c=b[d],k(c,"events")&&this.on(c.events,this),k(c,"onceEvents")&&this.once(c.onceEvents,this)};j(t.prototype,b),t.prototype.destroy=function(){this.off(),this.stopListening()},t.extend=function(a,b){var c,d=this;c=a&&k(a,"constructor")?a.constructor:function(){return d.apply(this,arguments)},j(c,d,b);var e=function(){this.constructor=c};return e.prototype=d.prototype,c.prototype=new e,a&&j(c.prototype,a),c.__super__=d.prototype,c};var u=t.extend({name:null,loaderVersion:null,frame:null,origin:m.ensureHttpBasedProtocol("http://disqus.com",s),state:null,getUrl:function(a,b){return a=this.loaderVersion?j({version:this.loaderVersion},a):j({disqus_version:"b7bf35c3"},a),m.ensureHttpBasedProtocol(m.get(this.name,a,b),s)},getFrameSettings:function(){var a={target:this.getUrl(),origin:this.origin,uid:this.uid},b=this.settings;return b.windowName?a.windowName=b.windowName:a.container=b.container||p.body,a},getFrame:function(){var a=this.getFrameSettings(),b=a.windowName?n.Popup:n.Channel;return new b(a)},setState:function(a){var b=this.constructor;return a in b.states?(this.state=b.states[a],void this.trigger("state:"+a)):!1},init:function(){var a,b=this;b.frame=a=this.getFrame(),b.listenTo(a,"all",function(c,d){b.trigger("frame:"+c,d,a)}),b.trigger("change:frame",a),b.frame.load(function(){b.setState("LOADED")}),b.setState("INIT")},destroy:function(){var a=this.frame;a&&(this.stopListening(a),a.destroy()),this.setState("KILLED"),this.frame=null,t.prototype.destroy.call(this)},events:{"frame:ready":function(){this.setState("READY")}},isHeightRestricted:function(a){function b(){return o.appearsToHideContent(d)||f&&o.appearsToHideContent(e)}function c(){return o.appearsToHideContent(d)&&o.hasOverflow(d)||f&&o.appearsToHideContent(e)&&o.hasOverflow(e)}a=a||{};var d=this.settings.container,e=d.parentNode,f=e!==r&&e!==p.body;return a.checkScrollHeight?c():b()}},{states:{INIT:0,LOADED:1,READY:2,RUNNING:3,KILLED:4}}),w=u.extend({getUrl:function(){var b=this.settings,c={f:b.forum,t_i:b.identifier,t_u:b.url||a.location.href,t_s:b.slug,t_e:b.title,t_d:b.documentTitle,t_t:b.title||b.documentTitle,t_c:b.category,s_o:b.sortOrder,l:b.language};return b.unsupported&&(c.n_s=b.unsupported),u.prototype.getUrl.call(this,c)},getFrameInitParams:function(b){var c=this.settings,d={permalink:c.permalink,anchorColor:c.anchorColor,referrer:a.location.href,hostReferrer:p.referrer,canonicalUrl:c.canonicalUrl,colorScheme:c.colorScheme,typeface:c.typeface,remoteAuthS3:c.remoteAuthS3,apiKey:c.apiKey,sso:c.sso,parentWindowHash:a.location.hash,forceAutoStyles:c.forceAutoStyles,layout:c.layout,timestamp:this.timestamp,embedLoadTime:this.getBootloaderTimingInfo(),isHeightRestricted:this.isHeightRestricted()};return d.initialPosition=this.getViewportAndScrollStatus(),d},listenToScrollEvent:function(a){var b=this,c=b.getScrollContainer();if(c===r)return b.listenTo(n,"window.scroll",a),function(){b.stopListening(n,"window.scroll",a)};var d=n.throttle(function(){a.call(b)},250,50);return n.addEvent(c,"scroll",d),function(){n.removeEvent(c,"scroll",d)}},getScrollContainer:function(){if(this.scrollContainer)return this.scrollContainer;if(!this.settings.enableScrollContainer)return r;var a=this.settings.container;do{var b=o.getComputedStyle(a,"overflow-y","overflowY");if(("scroll"===b||"auto"===b)&&a.clientHeight<a.scrollHeight)break;a=a.parentNode}while(a&&a!==r);return a&&a!==p.body||(a=r),this.scrollContainer=a},getViewportCoords:function(){return this.getScrollContainer()===r?this.getWindowCoords():this.getScrollContainerCoords()},getWindowCoords:function(){if("number"==typeof a.pageYOffset)this.getWindowScroll=function(){return a.pageYOffset},this.getWindowHeight=function(){return a.innerHeight};else{var b=r.clientHeight||r.clientWidth?r:p.body;this.getWindowScroll=function(){return b.scrollTop},this.getWindowHeight=function(){return b.clientHeight}}return this.getWindowCoords=function(){return{top:this.getWindowScroll(),height:this.getWindowHeight()}},this.getWindowCoords()},getScrollContainerCoords:function(){var a=this.getScrollContainer();return{top:a.scrollTop,height:a.clientHeight}},getBootloaderTimingInfo:function(){if(a.performance&&a.performance.getEntriesByName){var b=p.currentScript?p.currentScript.src:s+"//"+this.settings.forum+".disqus.com/embed.js",c=a.performance.getEntriesByName(b)[0];return c&&c.duration}},getViewportAndScrollStatus:function(){var a=this.frame;if(!a||!a.getOffset)return null;if(!h(a.elem))return null;var b=this.getViewportCoords();return{frameOffset:a.getOffset(this.getScrollContainer()),pageOffset:b.top,height:b.height}},communicateViewportAndScrollStatus:function(){var a=this.getViewportAndScrollStatus();if(a){var b=a.frameOffset,c=b.top,d=c+b.height,e=a.pageOffset,f=a.height,g=e+f,h=!1,i=!1;g+f>=c&&(h=d>=e,i=h&&g>=c);var j=this.frame;j.sendMessage("window.scroll.always",a),h&&j.sendMessage("window.scroll",a),i!==this.wasInViewport&&(j.sendMessage(i?"window.inViewport":"window.scrollOffViewport"),this.wasInViewport=i)}},getBestNextFrameHeight:function(a){var b=this.getViewportAndScrollStatus();if(!b||this.settings.enableScrollContainer||!this.getScrollContainer())return a;var c=b.frameOffset;if(a>=c.height)return a;var d=g(),e=d-(c.height+c.top),f=b.pageOffset+b.height-(c.top+e);return f>a?f+1:a},events:{"state:INIT":function(){this.settings.unsupported||(this.settings.windowName||(this.listenToScrollEvent(this.communicateViewportAndScrollStatus),this.listenTo(n,"window.resize",this.communicateViewportAndScrollStatus)),this.timestamp=Number(new Date))},"state:LOADED":function(){var a=this.frame,b=a.elem;this.settings.unsupported?(a.setInlineStyle("height","500px"),b.setAttribute("scrolling","yes"),b.setAttribute("horizontalscrolling","no"),b.setAttribute("verticalscrolling","yes"),a.show()):this.settings.windowName||(this.rendered=!1,a.setInlineStyle("height","0"),b.setAttribute("scrolling","no"),b.setAttribute("horizontalscrolling","no"),b.setAttribute("verticalscrolling","no"))},"frame:ready":function(a,b){var c=this.getFrameInitParams(a,b);if(b.sendMessage("init",c),c.isHeightRestricted){var e=this,f=400,g=d(function(){e.isHeightRestricted({checkScrollHeight:!0})||(b.sendMessage("heightRestrictionRemoved"),e.stopListening(n,"window.click",g))},f);this.listenTo(n,"window.click",g)}},"frame:resize":function(a,b){var c=a.height;b.elem&&this.rendered&&(c=this.getBestNextFrameHeight(c),b.setInlineStyle("height",c+"px"),b.sendMessage("embed.resized")),this.communicateViewportAndScrollStatus()},"frame:rendered":function(a,b){this.rendered=!0,this.wasInViewport=!1,b.trigger("resize",a),b.sendMessage("embed.rendered")},"frame:fail":function(a,b){b.elem&&b.setInlineStyle("height",a&&a.height||"75px")},"frame:scrollTo":function(b,c){if(c.elem&&c.getOffset){var d=this.getScrollContainer(),e=c.getOffset(d),f="window"===b.relative?b.top:e.top+b.top,g=this.getViewportCoords();!b.force&&f>g.top&&f<g.top+g.height||(d===r?a.scrollTo(0,f):d.scrollTop=f)}}}});return{BaseApp:t,WindowedApp:u,ThreadBoundApp:w}}(),C=function(a,b){for(var c=0;c<a.length;++c)if(a[c]===b)return c;return-1},D=function(a,b,c){for(var d=0;d<a.length;++d)if(b.call(c,a[d],d,a))return!0;return!1},E=function(a){return function(b,c,d){var e=null===b||void 0===b?void 0:b[c];return void 0===e&&(e=d),a(e)?e.call(b):e}}(g),F=function(a){return Boolean(a&&1===a.nodeType)},T=function(a,b,c){return a.getElement=function(a){return b(a)?a:a&&a.el},a.EL_ID_ATTR="data-visibility-id",a.OBJ_ID_PROP="_visibility_id",a.getId=function(d){var e=null;return b(d)?(e=d.getAttribute(a.EL_ID_ATTR)||null,e||(e=c(),d.setAttribute(a.EL_ID_ATTR,e))):d&&(e=d[a.OBJ_ID_PROP]||null,e||(e=d[a.OBJ_ID_PROP]=c())),e},a.visiblePercent=function(a,b){var c=0;if(!b)return c;var d=a.top,e=d+a.height,f=b.visibleTop<d,g=b.visibleBottom>e;return!f&&!g||f&&g?c=1:f?c=(b.height-(d-b.visibleTop))/b.height:g&&(c=(e-b.visibleTop)/b.height),Math.round(100*c)},a}(T,F,e),U=function(c,d,e,f,g,h){return h.events=[],h.lastPos=null,h.clearCache=function(a){if(a===b)h.getElementOffset.cache={};else{var c=g.getId(a);c&&(h.getElementOffset.cache[c]=null)}},h.calculateOffset=function(b){if(!b)return null;if(!e(b))return null;var c=b.ownerDocument.documentElement;return{height:b.offsetHeight,top:b.getBoundingClientRect().top+(a.pageYOffset||c.scrollTop)-(c.clientTop||0)}},h._getElementOffset=function(a){var b=g.getElement(a);if(!b)return null;var c=h.calculateOffset(b);return c?{visibleTop:c.top+(f(a,"topEdgeOffset")||0),visibleBottom:c.top+c.height-(f(a,"bottomEdgeOffset")||0),offsetTop:c.top,height:c.height}:null},h.getElementOffset=function(){var a=function(b){var c=a.cache,d=g.getId(b);if(d&&c[d])return c[d];var e=h._getElementOffset(b);return d&&e&&(c[d]=e),e};return a.cache={},a}(),h.EVENT_NAMES=["enter","exit","visible","invisible","all"],h.updateTracking=function(a){var e,f=function(a){return a?function(b){return a[b]}:function(){return b}};d(h.EVENT_NAMES,f(a._events))?(e=c(h.events,a),-1===e&&h.events.push(a)):(e=c(h.events,a),-1!==e&&h.events.splice(e,1))},h.processEvents=function(a){h.lastPos=a;var b=h.events;if(b.length)for(var c=b.length-1;c>=0;--c){var d=b[c],e=d.isVisible(a);null!==e&&(e!==d.lastVisible&&d.trigger(e?"enter":"exit",d,a),d.trigger(e?"visible":"invisible",d,a),d.lastVisible=e)}},h}(C,D,v,E,T,U),G=function(b,c,d,e,f,g,h){function i(a){return this instanceof i?(this.obj=a,void(this.lastVisible=!1)):new i(a)}var j=c(function(){h.processEvents(h.lastPos)},250);return g(i.prototype,b,{on:function(a){var c=!(this._events&&this._events[a]),d=b.on.apply(this,arguments);return c&&h.updateTracking(this),j(),d},off:function(a){var c=b.off.apply(this,arguments);return this._events&&this._events[a]||h.updateTracking(this),c},offset:function(){return h.getElementOffset(this.obj)},isVisible:function(a){if(a=a||h.lastPos,!a)return null;var b=a.top,c=b+a.height,d=this.offset();return d?d.offsetTop>=b&&d.visibleTop<c||d.offsetTop+d.height<=c&&d.visibleBottom>b:null},invalidate:function(){return h.clearCache(this.obj),this}}),g(i,{invalidate:h.clearCache,scroll:h.processEvents,_windowScrollHandlerBound:!1,_ignoreCache:!1,_windowScrollHandler:d(function(){i._ignoreCache&&i.invalidate(),h.processEvents({top:a.pageYOffset,height:a.document.documentElement.clientHeight})},250),bindWindowEvents:function(b){this._windowScrollHandlerBound||("undefined"!=typeof b&&(i._ignoreCache=b),e(a,"scroll",this._windowScrollHandler),e(a,"resize",this._windowScrollHandler),this._windowScrollHandlerBound=!0,this._windowScrollHandler())},unbindWindowEvents:function(){i._ignoreCache=!1,f(a,"scroll",this._windowScrollHandler),f(a,"resize",this._windowScrollHandler),this._windowScrollHandlerBound=!1}}),i}(f,y,m,k,l,i,U),H=function(a){return a}(G),
-V=function(b){return b=function(b,c){var d=null,e=!1;this.start=function(){e||(d=a.setTimeout(function(){e=!0,b()},c))},this.clear=function(){a.clearTimeout(d)}}}(V),I=function(){function a(a){if(a=Number(a),isNaN(a)||a>255)throw new Error("Color components should be numbers less than 256");return a=a.toString(16),1===a.length?"0"+a:String(a)}return function(b){return"#"+a(b.red)+a(b.green)+a(b.blue)}}(),J=function(){var a={},b=document.createElement("a");return a.getOrigin=function(a){b.href=a;var c=b.href.split("/");return c[0]+"//"+c[2]},a.getHostName=function(a){return b.href=a,b.hostname},a.getDomainPart=function(b,c){"undefined"==typeof c&&(c=0);var d=a.getHostName(b),e=d.split(".").reverse();return e[c]},a}(),K=function(){var c=q,d=B.WindowedApp,e=o,f=P,g=G,h=T,j=w,k=V,l=I,m=R,n=J.getOrigin,p=i,r={adsnative:160465,gravity:184723,taboola:184193,outbrain:185359},s=d.extend({name:"ads",loaderVersion:c.getLoaderVersionFromUrl("//a.disquscdn.com/next/embed/ads.load.641d7bfab403ee091b197275204cdf0d.js"),origin:b,onceEvents:{"view:enter":function(){this._report({verb:"view",adverb:"0ms-no50perc"})},"view:iab":function(){this._report({verb:"view",adverb:"iab-scroll"})}},events:{"frame:ready":function(a){this.forumId=a.forumId,this._report({verb:"load"}),this.bindViewEvents()},"frame:resize":function(a){this.frame.setInlineStyle("height",a.height+"px")},"frame:click":function(){this._report({verb:"click"})}},constructor:function(){d.apply(this,arguments),this.origin=n(this.settings.adUrl)},init:function(){j(a)||(this._report({verb:"call",object_type:"provider",object_id:this.getProvider(),adjective:1}),d.prototype.init.call(this))},getProvider:function(){var a=this.settings.adUrl.match(/provider=(\w+)/);return a?a[1]:void 0},getUrl:function(){var b=this.settings;return m(b.adUrl,{anchorColor:l(b.anchorColor),colorScheme:b.colorScheme,sourceUrl:a.document.location.href,typeface:b.typeface,canonicalUrl:b.canonicalUrl,base:"default",version:this.loaderVersion,disqus_version:"b7bf35c3"})},bindViewEvents:function(){if(!this._viewEventsBound){this._viewEventsBound=!0,g.bindWindowEvents(!0);var a=this,b=function(b,c){a.postMessageDirect({event:b,percentViewable:c})},c=1e3,d=new k(function(){a.trigger("view:iab"),b("view:iab")},c),e=!1;this.listenTo(g({el:this.frame.elem}),{enter:function(){a.trigger("view:enter"),b("view:enter")},exit:function(){b("view:exit"),e&&(e=!1,b("view:50out"),d.clear())},visible:function(a,c){var f=h.visiblePercent(c,a.offset());f>=50&&!e?(e=!0,b("view:50in"),d.start()):50>f&&e&&(e=!1,b("view:50out"),d.clear()),b("view",f)}})}},postMessageDirect:function(a){var b=e.stringify(p({},a,{space:"disqus"}));this.frame.requiresWindow(function(a){f.WindowBase.postMessage(this.window,a,this.origin)})(b)},handleDirectPostMessage:function(a){var b;try{b=e.parse(a.data)}catch(c){return}switch(b.event){case"articleClick":this._report({verb:"click"})}},_report:function(b){var d=this.settings,e=this.getProvider(),f=r[e];b.forum_id=d.forumId||this.forumId,c.reportJester(p({imp:d.impressionId,experiment:d.experimentName,variant:d.experimentVariant,service:d.experimentService,bin:"embed:promoted_discovery:"+d.experimentService+":"+d.experimentName+":"+d.experimentVariant,area:d.placement,product:"embed",forum:d.forum,zone:"thread",version:c.getLoaderVersionFromUrl("//a.disquscdn.com/next/embed/lounge.load.53b9c10388f784fd4079c153789a74db.js"),page_url:a.document.location.href,page_referrer:a.document.referrer,object_type:"advertisement",object_id:"["+f+"]",provider:e,advertisement_id:f,ad_product_name:"iab_display",ad_product_layout:"iab_display",event:"activity",section:"default"},b))},getFrameSettings:function(){var a=d.prototype.getFrameSettings.call(this);return a.insertBeforeEl=this.settings.insertBeforeEl,a.insertAfterEl=this.settings.insertAfterEl,a}}),t=function(a){return new s(a)};return{Ads:t}}(),L=function(){var b=R,c=q,d=A,e=B.WindowedApp,f=/^calc\((.+)\)$/,g=e.extend({name:"home",events:{"frame:close":function(b,c){c.hide(),a.focus()},"frame:openReady":function(){this.frame.show(),this.frame.sendMessage("open"),(c.browser.isIE()||c.browser.isSafari())&&this.preventScrolling()},"state:LOADED":function(){this.frame.removeInlineStyle("visibility")},"frame:after:render":function(){c.browser.isSafari()&&this.triggerHostReflow()}},preventScrolling:function(){var a=this.getBodyOverflow(),b=document.body.style.marginRight,d=document.documentElement.style,e=d.overflow;this.listenToOnce(this,"frame:close",function(){this.setBodyStyles({overflow:a,marginRight:b}),d.overflow=e}),this.setBodyStyles({overflow:"hidden",marginRight:this.calcMargin(c.getComputedStyle(document.body,"margin-right","marginRight")||b)}),d.overflow="hidden"},triggerHostReflow:function(){var a=document.createElement("style");document.body.appendChild(a),document.body.removeChild(a)},calcMargin:function(a){var b=a.match(f);return b&&(a=b[1]),a?"calc("+a+" + "+c.getScrollbarWidth()+"px)":c.getScrollbarWidth()+"px"},setBodyStyles:function(a){for(var b in a)document.body.style[b]=a[b]},getBodyOverflow:function(){return document.body.style.overflow},getSecureOrigin:function(){var a=d.ensureHttpBasedProtocol("https://disqus.com/home/","https:"),b=a.split("/"),c=b[0],e=b[2];return c+"//"+e},getFrameSettings:function(){var a=e.prototype.getFrameSettings.call(this);return a.role="dialog",a.origin=this.getSecureOrigin(),a.styles={height:"100%",position:"fixed",top:0,right:0,left:"auto",bottom:"auto","z-index":c.MAX_Z_INDEX,visibility:"hidden"},a},getUrl:function(){var a=this.settings.path||"",c=this.settings.language,e={utm_source:"disqus_embed"};return c&&"en"!==c&&(e.l=c),b(d.apps[this.name]+a,e)},show:function(a){if(!this.frame.isReady())return void this.once("frame:ready",function(){this.show(a)},this);var b={path:a};this.settings.sso&&(b.sso=this.settings.sso),this.frame.sendMessage("showPath",b)}},{READY_TIMEOUT:1e4,getInstanceOrLoad:function(a){var b=g.instance;return b?b:(b=g.instance=new g(a),a.preload&&b.listenToOnce(b,"state:INIT",function(){b.frame.hide()}),g.setHomeTimeout(b),b.init(),b)},setHomeTimeout:function(b){g.homeTimeoutId&&a.clearTimeout(g.homeTimeoutId);var c=g.homeTimeoutId=a.setTimeout(function(){b.frame.destroy(),b.trigger("timeout")},g.READY_TIMEOUT);b.listenToOnce(b,"state:READY",function(){a.clearTimeout(c)})},preload:function(a){return a.preload=!0,g.getInstanceOrLoad(a)},destroy:function(){var a=g.instance;a&&(a.destroy(),g.instance=null)},show:function(a){var b=g.getInstanceOrLoad(a);return b.show(a.path),b}});return{show:g.show,preload:g.preload,destroy:g.destroy,_HomeApp:g}}(),M=function(){var b=a.document,c=k,e=l,f=d,g=u,h=v,j=w,m=S,o=i,p=x,r=B.ThreadBoundApp,t=P,y=n,z=s,A=q,C=K,D=L,E=500,F=r.extend({name:"lounge",loaderVersion:A.getLoaderVersionFromUrl("//a.disquscdn.com/next/embed/lounge.load.53b9c10388f784fd4079c153789a74db.js"),indicators:null,wasInViewport:!1,triggeredSlowEvent:!1,events:{"state:INIT":function(){var a=this.settings,b=a.server_side;b&&"fallback"===b.service&&A.logStat("embed.fallback"),a.unsupported||(this.indicators={},this.isContainerVisible()?this.addLoadingAnim():this.addLoadingAnimOnContainerVisible(),this.bindPublisherCallbacks(),this.forwardGlobalEvents())},"state:LOADED":function(){this.isContainerVisible()&&this.addLoadingAnim()},"frame:reload":function(){a.location.reload()},"frame:navigate":function(b){a.location.href=b},"frame:session.identify":function(a){this.trigger("session.identify",a)},"frame:posts.paginate":function(){this.trigger("posts.paginate")},"frame:posts.count":function(a){this.trigger("posts.count",a)},"frame:posts.create":function(a){this.trigger("posts.create",{id:a.id,text:a.raw_message})},"frame:posts.beforeCreate":function(a){this.onBeforePostCreate(a)},"frame:home.destroy":function(){this.destroyHome()},"frame:home.preload":function(a){this.preloadHome(a)},"frame:home.show":function(a){this.showHome(a)},"frame:home.open":function(b){a.location=b},"frame:indicator:init":function(a,b){if(b.getOffset){for(var c,d,e=["north","south"],f=this.indicators,g=b.getOffset().width+"px",h={width:g,"min-width":g,"max-width":g,position:"fixed","z-index":A.MAX_Z_INDEX-1},i={north:{top:"0"},south:{bottom:"0"}},j=function(){b.sendMessage("indicator:click",this.uid.split("-")[1])},k=0;k<e.length;k++){d=e[k],c=new t.Sandbox({uid:"indicator-"+d,container:this.settings.container,contents:a[d].contents,styles:o(i[d],h),role:"alert",type:d});try{c.load()}catch(l){continue}c.hide(),c.click(j),f[d]=c}this.on({"frame:indicator:show":function(a){var b=f[a.type];b&&(b.document.getElementById("message").innerHTML=a.content,b.show())},"frame:indicator:hide":function(a){var b=a&&a.type,c=b&&f[b];if(c)c.hide();else if(!b)for(var d=0;d<e.length;d++)b=e[d],c=f[b],c&&c.hide()}})}},"frame:change:sort":function(a){A.storage.setItem("disqus.sort",a)},"frame:fail frame:rendered":function(){this.removeLoadingAnim(),this.setState("RUNNING")},"frame:fail":function(a){A.logStat("failed_embed.server."+a.code)},"frame:rendered":function(){this.triggeredSlowEvent&&A.logStat("rendered_embed.slow")}},onceEvents:{"frame:viglink:init":function(b,c){var d=function(){for(var b in a)if(0===b.indexOf("skimlinks")||0===b.indexOf("skimwords"))return!0;return!1};if(!(a.vglnk_self||a.vglnk||d())){var e=b.apiUrl,f=b.key,g=String(b.id);null!=b.clientUrl&&null!=e&&null!=f&&null!=b.id&&(this.listenForAffiliationRequests(e,f,g),DISQUS.vglnk={api_url:e,key:f,sub_id:g,onlibready:function(){c.sendMessage("viglink:change:timeout",{timeout:DISQUS.vglnk.opt("click_timeout")})}},a.vglnk_self="DISQUS.vglnk",m(b.clientUrl))}}},getFrameInitParams:function(b,c){var d=r.prototype.getFrameInitParams.call(this,b,c);return d.experiment={experiment:this.settings.experimentName,variant:this.settings.experimentVariant,service:this.settings.experimentService},d.discovery=this.settings.discovery,(this.settings.discoveryDisabled||j(a))&&(d.discoveryDisabled=!0),d},onBeforePostCreate:function(a){var b={text:a.raw_message};try{var c=this.settings.callbacks.beforeComment;if(c)for(var d=0;d<c.length;d++)b=c[d](b)}catch(e){z.log("Error processing Disqus callback: ",e.toString())}finally{this.frame.sendMessage("posts.beforeCreate.response",b&&b.text)}},destroyHome:function(){D.destroy()},preloadHome:function(a){a.path="home/preload/";var b=this.home=D.preload(this.getHomeData(a));this.listenToOnce(b,"frame:ready",function(){this.frame.sendMessage("home.ready")}),this.handleHomeTimeout(b)},handleHomeTimeout:function(a){this.listenTo(a,"timeout",function(){this.frame.sendMessage("home.timeout")})},showHome:function(a){var b=this.home=D.show(this.getHomeData(a));this.listenToOnce(b,"frame:openReady",function(){this.frame.sendMessage("home.opened")}),this.handleHomeTimeout(b)},getHomeData:function(a){var b=this.settings;return a.language||(a.language=b.language),b.apiKey&&b.remoteAuthS3&&(a.sso={apiKey:b.apiKey,remoteAuthS3:b.remoteAuthS3}),a},listenForAffiliationRequests:function(a,b,c){var d=this.frame;this.on("frame:viglink:getaffiliatelink",function(e){function f(a){return function(b){var c={linkId:a};b&&(c.url=b),d.sendMessage("viglink:getaffiliatelink:response",c)}}var g=DISQUS.vglnk.$;return g?void g.request(a+"/click",{format:"jsonp",out:e.url,key:b,loc:d.target,subId:c},{fn:f(e.linkId),timeout:DISQUS.vglnk.opt("click_timeout")}):void d.sendMessage("viglink:getaffiliatelink:response")})},forwardGlobalEvents:function(){var a=this;a.settings.windowName||(a.listenTo(t,"window.resize",function(){a.frame.sendMessage("window.resize")}),a.listenTo(t,"window.click",function(){a.frame.sendMessage("window.click")}),a.listenTo(t,"window.mousemove",function(){a.frame.sendMessage("window.mousemove")})),a.listenTo(t,"window.hashchange",function(b){a.frame.sendMessage("window.hashchange",b.hash)})},bindPublisherCallbacks:function(){var a=this,b=a.settings,c=F.LEGACY_EVENTS_MAPPING,d=b.callbacks;d&&f(d,function(b,d){c[d]&&f(b,function(b){a.on(c[d],b)})})},isContainerVisible:function(){var a=this.getViewportCoords(),b=t.getOffset(this.settings.container,this.getScrollContainer()),c=b.top+b.height-a.top;return c>0&&c<=a.height},showSlowLoadingMessage:function(){var a,b=this;if(b.loadingElem){if(A.pageVisibility.isHidden())return a=function(){A.pageVisibility.stopListening(a),b.setSlowLoadingMessageTimer(2e3)},void A.pageVisibility.listen(a);b.triggeredSlowEvent=!0,b.state===b.constructor.states.READY?A.logStat("slow_embed.got_ready"):b.state===b.constructor.states.LOADED?A.logStat("slow_embed.loaded"):A.logStat("slow_embed.no_ready"),b.loadingElem.firstChild.insertAdjacentHTML("afterend",'<p align="center">Disqus seems to be taking longer than usual. <a href="#" onclick="DISQUS.reset({reload: true}); return false;">Reload</a>?</p>')}},clearSlowLoadingMessageTimer:function(){this.timeout&&(a.clearTimeout(this.timeout),this.timeout=null)},setSlowLoadingMessageTimer:function(b){var c=this;c.clearSlowLoadingMessageTimer(),c.timeout=a.setTimeout(function(){c.showSlowLoadingMessage()},b)},addLoadingAnimOnContainerVisible:function(){var a,b=this;a=b.listenToScrollEvent(function(){var c=b.isContainerVisible();(c||b.state>=b.constructor.states.RUNNING)&&a(),c&&b.addLoadingAnim()})},addLoadingAnim:function(){var a,c,d,e=this,f=e.settings.container;if(e.loadingElem)return e.loadingElem;if(!(e.state>=e.constructor.states.RUNNING)){var g=b.createElement("link");g.rel="stylesheet",g.href="//a.disquscdn.com/next/embed/styles/loading.8023a7350e47171f7bb79707886cd7c5.css",(b.head||b.getElementsByTagName("head")[0]).appendChild(g),a=b.createElement("div"),c=b.createElement("div"),d=b.createElement("div"),c.appendChild(d),a.appendChild(c),a.dir="ltr",a.style.overflow="hidden";var h="dark"===e.settings.colorScheme;c.className="disqus-loader-bubble";var i=c.style;i.height="52px",i.width="54px",i.margin="0 auto",i.overflow="hidden",i.position="relative",h&&(i.backgroundPosition="0 -52px");var j=13,k=h?"rgba(223, 228, 237, .4)":"rgba(51, 54, 58, .4)",l=h?"#6D6F72":"#A3A7AD",m=d.style;return i.boxSizing=m.boxSizing="border-box",m.height=m.width=2*j+"px",m.position="absolute",m.top="13px",m.left="15px","borderRadius"in m?(m.borderWidth="3px",m.borderStyle="solid",m.borderColor=k+" transparent",m.borderRadius=j+"px",m.transformOrigin="50% 50% 0px",d.className="disqus-loader-spinner"):m.borderLeft="3px solid "+l,f.appendChild(a),e.loadingElem=a,A.logStat("lounge.loading.view"),e.setSlowLoadingMessageTimer(15e3),e.loadingElem}},removeLoadingAnim:function(){var a=this.loadingElem,b=this.settings.container;this.clearSlowLoadingMessageTimer(),a&&a.parentNode===b&&(b.removeChild(a),this.loadingElem=null)},destroy:function(){var a=this.indicators;this.removeLoadingAnim(),a&&a.north&&(a.north.destroy(),a.north=null),a&&a.south&&(a.south.destroy(),a.south=null),r.prototype.destroy.call(this)}},{LEGACY_EVENTS_MAPPING:{onReady:"frame:rendered",onNewComment:"posts.create",onPaginate:"posts.paginate",onCommentCountChange:"posts.count",onIdentify:"session.identify"}}),G=F.extend({init:function(){this.settings.impressionId=g.generate({Math:y("Math"),crypto:y("crypto"),Uint32Array:y("Uint32Array"),Date:y("Date")});var b=this.settings.discovery;if(b&&(b.disable_all||b.disable_promoted))return F.prototype.init.call(this);F.prototype.init.call(this),this.topAds=this.bottomAds=null;var d=this.isHeightRestricted(),e=this,f={};p(function(){return e.frame&&e.frame.elem?d&&!e.rendered?!1:h(e.frame.elem)&&!e.isHeightRestricted({checkScrollHeight:!0}):f},function(b){if(b!==f){var d=e.settings.topPlacementUrl,g=e.settings.bottomPlacementUrl;d&&(e.topAds=C.Ads(o({adUrl:d,placement:"top"},e.settings,{insertBeforeEl:e.frame.elem})),e.topAds.init()),g&&(e.bottomAds=C.Ads(o({adUrl:g,placement:"bottom"},e.settings,{insertAfterEl:e.frame.elem})),e.bottomAds.init()),e.messageListener=function(a){e.topAds&&e.topAds.frame&&a.source===e.topAds.frame.window&&d.slice(0,a.origin.length)===a.origin?e.topAds.handleDirectPostMessage(a):e.bottomAds&&e.bottomAds.frame&&a.source===e.bottomAds.frame.window&&g.slice(0,a.origin.length)===a.origin&&e.bottomAds.handleDirectPostMessage(a)},c(a,"message",e.messageListener)}},E)},destroy:function(){this.topAds&&this.topAds.destroy(),this.bottomAds&&this.bottomAds.destroy(),e(a,"message",this.messageListener),F.prototype.destroy.call(this)},getFrameInitParams:function(a,b){var c=F.prototype.getFrameInitParams.call(this,a,b);return c.impressionId=this.settings.impressionId,c.discoveryDisabled=!0,c}}),H=function(a){return a.topPlacementUrl||a.bottomPlacementUrl?new G(a):new F(a)};return{Lounge:H}}(),W=function(b){var c=r.HostConfig,d=P,e=s,f=q,g=M,h=new c(a);b.configAdapter=h;var i,j=!1,k=b.removeDisqusLink=function(){var b=a.document;if(b.getElementsByClassName){if("complete"!==b.readyState)return d.addEvent(a,"load",k);var c=b.getElementsByClassName("dsq-brlink"),e=c&&c.length&&c[0];e&&e.parentNode.removeChild(e)}};b.loadEmbed=function(a){if(i)return l({reload:!0}),e.log("Use DISQUS.reset instead of reloading embed.js please."),void e.log("See https://help.disqus.com/customer/portal/articles/472107-using-disqus-on-ajax-sites");h.configurator=a;var c=h.toJSON();return j||(c.container.innerHTML="",j=!0),i=g.Lounge(c),i.init(),b.removeDisqusLink(),i};var l=b.reset=function(a){a=a||{},i&&(i.triggeredSlowEvent&&i.state!==i.constructor.states.RUNNING&&f.logStat("reset_embed.slow"),i.destroy(),i=null),a.reload&&b.loadEmbed(a.config)};return b}(W),N=function(){var b=a.DISQUS||{},c=S;b.reset||(b.reset=W.reset),b.request||(b.request={}),b.request.get||(b.request.get=function(a,b,d){c(a,b,d)}),b.host||(b.host={}),b.host._loadEmbed||(b.host._loadEmbed=W.loadEmbed),a.DISQUS=b}()}(this),this.DISQUS.host._loadEmbed();
+//HelloDog -  http://wsgzao.github.io/post/duoshuo/
+//More info: http://moxfive.xyz/2015/09/29/duosuo-style
+//移动客户端判断开始
+function checkMobile() {
+    var isiPad = navigator.userAgent.match(/iPad/i) != null;
+    if (isiPad) {
+        return false;
+    }
+    var isMobile = navigator.userAgent.match(/iphone|android|phone|mobile|wap|netfront|java|opera mobi|opera mini|ucweb|windows ce|symbian|symbianos|series|webos|sony|blackberry|dopod|nokia|samsung|palmsource|xda|pieplus|meizu|midp|cldc|motorola|foma|docomo|up.browser|up.link|blazer|helio|hosin|huawei|novarra|coolpad|webos|techfaith|palmsource|alcatel|amoi|ktouch|nexian|ericsson|philips|sagem|wellcom|bunjalloo|maui|smartphone|iemobile|spice|bird|zte-|longcos|pantech|gionee|portalmmm|jig browser|hiptop|benq|haier|^lct|320x320|240x320|176x220/i) != null;
+    if (isMobile) {
+        return true;
+    }
+    return false;
+}
+//移动客户端判断结束
+//管理员判断开始
+function sskadmin(e) {
+    var ssk = '';
+    if (e.user_id == 6225154084773561090) {
+        if (checkMobile()) {
+            ssk = '<span class="ua"><span class="sskadmin">Captain</span></span><br><br>';
+        } else {
+            ssk = '<span class="ua"><span class="sskadmin">Captain</span></span>';
+        }
+    } else {
+        if (checkMobile()) {
+            ssk = '<br><br>';
+        }
+    }
+    return ssk;
+}
+//管理员判断结束
+//显UA开始
+function ua(e) {
+    var r = new Array;
+    var outputer = '';
+    if (r = e.match(/FireFox\/([^\s]+)/ig)) {
+        var r1 = r[0].split("/");
+        outputer = '<span class="ua_firefox"><i class="fa fa-firefox"></i> FireFox'
+    } else if (r = e.match(/Maxthon([\d]*)\/([^\s]+)/ig)) {
+        var r1 = r[0].split("/");
+        outputer = '<span class="ua_maxthon"><i class="fa fa-globe"></i> Maxthon'
+    } else if (r = e.match(/BIDUBrowser([\d]*)\/([^\s]+)/ig)) {
+        var r1 = r[0].split("/");
+        outputer = '<span class="ua_ucweb"><i class="fa fa-globe"></i> 百度浏览器'
+    } else if (r = e.match(/UBrowser([\d]*)\/([^\s]+)/ig)) {
+        var r1 = r[0].split("/");
+        outputer = '<span class="ua_ucweb"><i class="fa fa-globe"></i> UCBrowser'
+    } else if (r = e.match(/UCBrowser([\d]*)\/([^\s]+)/ig)) {
+        var r1 = r[0].split("/");
+        outputer = '<span class="ua_ucweb"><i class="fa fa-globe"></i> UCBrowser'
+    } else if (r = e.match(/MetaSr/ig)) {
+        outputer = '<span class="ua_sogou"><i class="fa fa-globe"></i> 搜狗浏览器'
+    } else if (r = e.match(/2345Explorer/ig)) {
+        outputer = '<span class="ua_2345explorer"><i class="fa fa-globe"></i> 2345王牌浏览器'
+    } else if (r = e.match(/2345chrome/ig)) {
+        outputer = '<span class="ua_2345chrome"><i class="fa fa-globe"></i> 2345加速浏览器'
+    } else if (r = e.match(/LBBROWSER/ig)) {
+        outputer = '<span class="ua_lbbrowser"><i class="fa fa-globe"></i> 猎豹安全浏览器'
+    } else if (r = e.match(/MicroMessenger\/([^\s]+)/ig)) {
+        var r1 = r[0].split("/");
+        outputer = '<span class="ua_qq"><i class="fa fa-weixin"></i> 微信'
+        /*.split('/')[0]*/
+    } else if (r = e.match(/QQBrowser\/([^\s]+)/ig)) {
+        var r1 = r[0].split("/");
+        outputer = '<span class="ua_qq"><i class="fa fa-qq"></i> QQ浏览器'
+        /*.split('/')[0]*/
+    } else if (r = e.match(/QQ\/([^\s]+)/ig)) {
+        var r1 = r[0].split("/");
+        outputer = '<span class="ua_qq"><i class="fa fa-qq"></i> QQ浏览器'
+        /*.split('/')[0]*/
+    } else if (r = e.match(/MiuiBrowser\/([^\s]+)/ig)) {
+        var r1 = r[0].split("/");
+        outputer = '<span class="ua_mi"><i class="fa fa-globe"></i> Miui浏览器'
+        /*.split('/')[0]*/
+    } else if (r = e.match(/Chrome([\d]*)\/([^\s]+)/ig)) {
+        var r1 = r[0].split("/");
+        outputer = '<span class="ua_chrome"><i class="fa fa-chrome"></i> Chrome'
+        /*.split('.')[0]*/
+    } else if (r = e.match(/safari\/([^\s]+)/ig)) {
+        var r1 = r[0].split("/");
+        outputer = '<span class="ua_apple"><i class="fa fa-safari"></i> Safari'
+    } else if (r = e.match(/Opera[\s|\/]([^\s]+)/ig)) {
+        var r1 = r[0].split("/");
+        outputer = '<span class="ua_opera"><i class="fa fa-opera"></i> Opera'
+    } else if (r = e.match(/Trident\/7.0/gi)) {
+        outputer = '<span class="ua_ie"><i class="fa fa-internet-explorer"></i> IE 11'
+    } else if (r = e.match(/MSIE\s([^\s|;]+)/gi)) {
+        outputer = '<span class="ua_ie"><i class="fa fa-internet-explorer"></i> IE' + ' ' + r[0]
+        /*.replace('MSIE', '').split('.')[0]*/
+    } else {
+        outputer = '<span class="ua_other"><i class="fa fa-globe"></i> 其它浏览器'
+    }
+    if (checkMobile()) {
+        Mobile = '<br><br>';
+    } else {
+        Mobile = '';
+    }
+    return outputer + "</span>" + Mobile;
+}
+function os(e) {
+    var os = '';
+    if (e.match(/win/ig)) {
+        if (e.match(/nt 5.1/ig)) {
+            os = '<span class="os_xp"><i class="fa fa-windows"></i> Windows XP'
+        } else if (e.match(/nt 6.1/ig)) {
+            os = '<span class="os_7"><i class="fa fa-windows"></i> Windows 7'
+        } else if (e.match(/nt 6.2/ig)) {
+            os = '<span class="os_8"><i class="fa fa-windows"></i> Windows 8'
+        } else if (e.match(/nt 6.3/ig)) {
+            os = '<span class="os_8_1"><i class="fa fa-windows"></i> Windows 8.1'
+        } else if (e.match(/nt 10.0/ig)) {
+            os = '<span class="os_8_1"><i class="fa fa-windows"></i> Windows 10'
+        } else if (e.match(/nt 6.0/ig)) {
+            os = '<span class="os_vista"><i class="fa fa-windows"></i> Windows Vista'
+        } else if (e.match(/nt 5/ig)) {
+            os = '<span class="os_2000"><i class="fa fa-windows"></i> Windows 2000'
+        } else {
+            os = '<span class="os_windows"><i class="fa fa-windows"></i> Windows'
+        }
+    } else if (e.match(/android/ig)) {
+        os = '<span class="os_android"><i class="fa fa-android"></i> Android'
+    } else if (e.match(/ubuntu/ig)) {
+        os = '<span class="os_ubuntu"><i class="fa fa-desktop"></i> Ubuntu'
+    } else if (e.match(/linux/ig)) {
+        os = '<span class="os_linux"><i class="fa fa-linux"></i> Linux'
+    } else if (e.match(/mac/ig)) {
+        os = '<span class="os_mac"><i class="fa fa-apple"></i> Mac OS X'
+    } else if (e.match(/unix/ig)) {
+        os = '<span class="os_unix"><i class="fa fa-desktop"></i> Unix'
+    } else if (e.match(/symbian/ig)) {
+        os = '<span class="os_nokia"><i class="fa fa-mobile"></i> Nokia SymbianOS'
+    } else {
+        os = '<span class="os_other"><i class="fa fa-desktop"></i> 其它操作系统'
+    }
+    return os + "</span>";
+}
+//显UA结束
+
+(function(e, t, n) {
+    function at(e, t) {
+        for (var n in t) t[n] && (e[n] ? e[n].set(t[n]) : e[n] = new et(t[n]))
+    }
+    function ft(e, t) {
+        for (var n in t) e[n] = t[n]
+    }
+    function lt() {
+        if (u.checkPermission()) return;
+        var t;
+        while (t = O.shift()) {
+            var n = u.createNotification(t.iconUrl, t.title, t.body),
+            i = t.url;
+            try {
+                n.onclick = function() {
+                    e.focus(),
+                    r.href = i,
+                    n.cancel()
+                }
+            } catch(s) {}
+            n.show(),
+            setTimeout(function() {
+                n.cancel && n.cancel()
+            },
+            8e3)
+        }
+    }
+    function ct() {
+        return rt.data.user_id == 0
+    }
+    function ht(e, t, n) {
+        if (o) try {
+            o.removeItem(e),
+            o.removeItem(e + ":timestamp"),
+            o[e] = i.stringify(t),
+            o[e + ":timestamp"] = Math.floor(n)
+        } catch(r) {}
+    }
+    function pt(e) {
+        w.theme = e,
+        e != "none" && w.injectStylesheet(b + "/styles/embed" + (e ? "." + e + ".css?" + y[e] : "." + short_name) + ".css")
+    }
+    if (e.DUOSHUO) return;
+    var r = e.location,
+    i = e.JSON,
+    s = e.XMLHttpRequest,
+    o = i && i.stringify && e.localStorage,
+    u = e.webkitNotifications,
+    a = t.getElementsByTagName("head")[0] || t.getElementsByTagName("body")[0],
+    f = e.navigator.userAgent,
+    l = t.location.protocol == "https:" ? "https:": "http:",
+    c = 0,
+    h,
+    p = function() {
+        var e = {
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#x27;",
+            "`": "&#x60;"
+        },
+        t = /&(?!\w+;)|[<>"'`]/g,
+        n = /[&<>"'`]/,
+        r = function(t) {
+            return e[t] || "&amp;"
+        };
+        return function(e) {
+            return e == null || e === !1 ? "": n.test(e) ? e.replace(t, r) : e
+        }
+    } (),
+    d = function(e) {
+        if (e.match(/^(http|https):/)) return e;
+        var n = t.createElement("a");
+        return n.href = e,
+        x.hrefNormalized ? n.href: n.getAttribute("href", 4)
+    },
+    v = {
+        start: 0,
+        end: 0
+    },
+    m = function(e) {
+        var n = this,
+        r = 0,
+        i = 0,
+        s, o, u, a, f;
+        t.selection && (o = t.selection.createRange(), o && o.parentElement() == n && (a = n.value.length, s = n.value.replace(/\r\n/g, "\n"), u = n.createTextRange(), u.moveToBookmark(o.getBookmark()), f = n.createTextRange(), f.collapse(!1), u.compareEndPoints("StartToEnd", f) > -1 ? r = i = a: (r = -u.moveStart("character", -a), r += s.slice(0, r).split("\n").length - 1, u.compareEndPoints("EndToEnd", f) > -1 ? i = a: (i = -u.moveEnd("character", -a), i += s.slice(0, i).split("\n").length - 1)))),
+        v.start = r,
+        v.end = i
+    },
+    g = function(e) {
+        return function() {
+            return e
+        }
+    },
+    y = {
+        "default": "d6149e1c",
+        dark: "c11b5925",
+        bluebox: "dbc0a9af"
+    },
+    b = l + "//static.duoshuo.com",
+    w = e.DUOSHUO = {
+        DOMAIN: "duoshuo.com",
+        REMOTE: "http://duoshuo.com",
+        version: 140327,
+        loaded: {
+            jQuery: typeof jQuery != "undefined" && jQuery.fn.jquery >= "1.5",
+            smilies: !1,
+            mzadxN: typeof mzadxN != "undefined"
+        },
+        libs: {
+            jQuery: b + "/libs/embed.compat.js?24f8ca3f.js",
+            smilies: b + "/libs/smilies.js?921e8eda.js",
+            mzadxN: "http://js.miaozhen.com/mz_ad_serving.js"
+        },
+        sourceName: {
+            weibo: "\u65b0\u6d6a\u5fae\u535a",
+            qq: "QQ",
+            qzone: "QQ\u7a7a\u95f4",
+            qqt: "\u817e\u8baf\u5fae\u535a",
+            renren: "\u4eba\u4eba\u7f51",
+            douban: "\u8c46\u74e3\u7f51",
+            netease: "\u7f51\u6613\u5fae\u535a",
+            kaixin: "\u5f00\u5fc3\u7f51",
+            sohu: "\u641c\u72d0\u5fae\u535a",
+            baidu: "\u767e\u5ea6",
+            taobao: "\u6dd8\u5b9d",
+            msn: "MSN",
+            google: "\u8c37\u6b4c"
+        },
+        serviceNames: {
+            weibo: "\u5fae\u535a",
+            qq: "QQ",
+            douban: "\u8c46\u74e3",
+            renren: "\u4eba\u4eba",
+            netease: "\u7f51\u6613",
+            kaixin: "\u5f00\u5fc3",
+            sohu: "\u641c\u72d0",
+            baidu: "\u767e\u5ea6",
+            taobao: "\u6dd8\u5b9d",
+            msn: "MSN",
+            google: "\u8c37\u6b4c"
+        },
+        parseDate: function(e) {
+            return e.parse("2011-10-28T00:00:00+08:00") &&
+            function(t) {
+                return new e(t)
+            } || e.parse("2011/10/28T00:00:00+0800") &&
+            function(t) {
+                return new e(t.replace(/-/g, "/").replace(/:(\d\d)$/, "$1"))
+            } || e.parse("2011/10/28 00:00:00+0800") &&
+            function(t) {
+                return new e(t.replace(/-/g, "/").replace(/:(\d\d)$/, "$1").replace("T", " "))
+            } ||
+            function(t) {
+                return new e(t)
+            }
+        } (Date),
+        fullTime: function(e) {
+            var t = w.parseDate(e);
+            return t.getFullYear() + "\u5e74" + (t.getMonth() + 1) + "\u6708" + t.getDate() + "\u65e5 " + t.toLocaleTimeString()
+        },
+        elapsedTime: function(e) {
+            var t = w.parseDate(e),
+            n = new Date,
+            r = (n - c - t) / 1e3;
+            return r < 10 ? "\u521a\u521a": r < 60 ? Math.round(r) + "\u79d2\u524d": r < 3600 ? Math.round(r / 60) + "\u5206\u949f\u524d": r < 86400 ? Math.round(r / 3600) + "\u5c0f\u65f6\u524d": (n.getFullYear() == t.getFullYear() ? "": t.getFullYear() + "\u5e74") + (t.getMonth() + 1) + "\u6708" + t.getDate() + "\u65e5"
+        },
+        require: function(e, t) {
+            if (typeof e == "string") w.loaded[e] ? t() : F(w.libs[e],
+            function() {
+                w.loaded[e] = !0,
+                t()
+            });
+            else if (typeof e == "object") {
+                var n, r = !0;
+                for (n = 0; n < e.length; n++)(function(i) {
+                    if (w.loaded[e[n]]) return;
+                    r = !1,
+                    F(w.libs[i],
+                    function() {
+                        w.loaded[i] = !0;
+                        for (var n = 0; n < e.length; n++) if (!w.loaded[e[n]]) return;
+                        t()
+                    })
+                })(e[n]);
+                r && t()
+            }
+        },
+        getCookie: function(e) {
+            var r = " " + e + "=",
+            i = t.cookie.split(";"),
+            s = 0,
+            o,
+            u,
+            a;
+            for (; s < i.length; s++) {
+                o = " " + i[s],
+                u = o.indexOf(r);
+                if (u >= 0 && u + r.length == (a = o.indexOf("=") + 1)) return decodeURIComponent(o.substring(a, o.length).replace(/\+/g, ""))
+            }
+            return n
+        },
+        param: function(e) {
+            var t = [];
+            for (var r in e) e[r] != n && t.push(r + "=" + encodeURIComponent(e[r]));
+            return t.join("&")
+        },
+        ajax: function(e, t, r, o, u) {
+            var a = w.getCookie("duoshuo_token");
+            r.v = w.version,
+            a ? r.jwt = a: z.remote_auth && (r.remote_auth = z.remote_auth);
+            if (s && i && i.parse) {
+                var f = new s;
+                if ( !! f && "withCredentials" in f) {
+                    var l;
+                    function c(e, t, n, r) {
+                        var s, a, f, l = t;
+                        if (e >= 200 && e < 300 || e === 304) if (e === 304) l = "notmodified",
+                        s = !0;
+                        else try {
+                            a = i.parse(n),
+                            l = "success",
+                            s = !0
+                        } catch(c) {
+                            l = "parsererror",
+                            f = c
+                        } else {
+                            f = l;
+                            if (!l || e) l = "error",
+                            e < 0 && (e = 0);
+                            try {
+                                a = i.parse(n)
+                            } catch(c) {
+                                l = "parsererror",
+                                f = c
+                            }
+                        }
+                        s ? o(a) : l === "parseerror" ? I("\u89e3\u6790\u9519\u8bef: " + n) : (u && u(a), I("\u51fa\u9519\u5566(" + a.code + "): " + a.errorMessage), a.errorTrace && I(a.errorTrace))
+                    }
+                    f.open(e, w.hostUrl + t + ".json" + (e == "GET" ? "?" + w.param(r) : ""), !0),
+                    f.withCredentials = !0,
+                    f.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8"),
+                    f.send(e == "GET" ? null: w.param(r)),
+                    l = function(e, t) {
+                        var r, i, s, o;
+                        try {
+                            if (l && (t || f.readyState === 4)) {
+                                l = n;
+                                if (t) f.readyState !== 4 && f.abort();
+                                else {
+                                    r = f.status,
+                                    s = f.getAllResponseHeaders();
+                                    try {
+                                        o = f.responseText
+                                    } catch(e) {}
+                                    try {
+                                        i = f.statusText
+                                    } catch(u) {
+                                        i = ""
+                                    }
+                                }
+                            }
+                        } catch(a) {
+                            t || c( - 1, a)
+                        }
+                        o && c(r, i, o, s)
+                    },
+                    f.readyState === 4 ? l() : f.onreadystatechange = l;
+                    return
+                }
+            }
+            e != "GET" && (r._method = "POST");
+            var h = "cb_" + Math.round(Math.random() * 1e6);
+            w[h] = function(e) {
+                switch (e.code) {
+                case 0:
+                    o(e);
+                    break;
+                default:
+                    u && u(e),
+                    I("\u51fa\u9519\u5566(" + e.code + "): " + e.errorMessage),
+                    e.errorTrace && I(e.errorTrace)
+                }
+            },
+            r.callback = "DUOSHUO['" + h + "']",
+            F(w.hostUrl + t + ".jsonp?" + w.param(r))
+        },
+        injectStylesheet: function(e) {
+            var n = t.createElement("link");
+            n.type = "text/css",
+            n.rel = "stylesheet",
+            n.href = e,
+            a.appendChild(n)
+        },
+        setCustomStyle: function(e) {
+            h || (h = t.createElement("style"), h.type = "text/css", a.appendChild(h)),
+            e = e.replace(/\}/g, "}\n");
+            if (h.styleSheet) h.styleSheet.cssText = e;
+            else {
+                while (h.firstChild) h.removeChild(h.firstChild);
+                h.appendChild(t.createTextNode(e))
+            }
+        },
+        compileStyle: function(e) {
+            var t = "",
+            n = {
+                textbox: "#ds-thread #ds-reset .ds-replybox .ds-textarea-wrapper"
+            };
+            if (e) for (var r in e) t += n[r] + "{" + e[r] + "}\n";
+            return t
+        },
+        init: function(e, t) {
+            e && !N[e] && (N[e] = t || {
+                type: "EmbedThread"
+            }),
+            w.initView && w.initView()
+        }
+    },
+    E = t.all,
+    S,
+    x = w.support = function() {
+        var n = t.createElement("div");
+        n.innerHTML = '<a href="/a">a</a><input type="checkbox"/>';
+        var i = n.getElementsByTagName("a")[0],
+        o = n.getElementsByTagName("input")[0],
+        u = {
+            placeholder: "placeholder" in o,
+            touch: "ontouchstart" in e || "onmsgesturechange" in e,
+            hrefNormalized: i.getAttribute("href") === "/a",
+            iOS: f.match(/ \((iPad|iPhone|iPod);( U;)? CPU( iPhone)? OS /),
+            android: f.match(/ \(Linux; U; Android /)
+        };
+        return S = !s && typeof n.style.maxHeight == "undefined",
+        u.authInWin = e.postMessage && e.screen.width > 800 && !u.iOS && !u.android && r.origin,
+        u
+    } (),
+    T = function(e, n) {
+        var r = (t.body || t.documentElement).style;
+        if (typeof r == "undefined") return ! 1;
+        if (typeof r[e] == "string") return n ? e: !0;
+        var i = ["Moz", "Webkit", "ms"],
+        e = e.charAt(0).toUpperCase() + e.substr(1),
+        s = 0;
+        for (; s < i.length; s++) if (typeof r[i[s] + e] == "string") return n ? i[s] + e: !0
+    },
+    N = w.selectors = {
+        ".ds-thread": {
+            type: "EmbedThread"
+        },
+        ".ds-recent-comments": {
+            type: "RecentComments"
+        },
+        ".ds-recent-visitors": {
+            type: "RecentVisitors"
+        },
+        ".ds-top-users": {
+            type: "TopUsers"
+        },
+        ".ds-top-threads": {
+            type: "TopThreads"
+        },
+        ".ds-login": {
+            type: "LoginWidget"
+        },
+        ".ds-thread-count": {
+            type: "ThreadCount"
+        }
+    },
+    C = w.pagelets = [],
+    k = {
+        post: "\u53d1\u5e03",
+        posting: "\u6b63\u5728\u53d1\u5e03",
+        settings: "\u8bbe\u7f6e",
+        reply: "\u56de\u590d",
+        like: "\u9876",
+        repost: "\u8f6c\u53d1",
+        report: "\u4e3e\u62a5",
+        "delete": "\u5220\u9664",
+        reply_to: "\u56de\u590d ",
+        reposts: "\u8f6c\u53d1",
+        comments: "\u8bc4\u8bba",
+        floor: "\u697c",
+        latest: "\u6700\u65b0",
+        earliest: "\u6700\u65e9",
+        hottest: "\u6700\u70ed",
+        share_to: "\u5206\u4eab\u5230:",
+        leave_a_message: "\u8bf4\u70b9\u4ec0\u4e48\u5427\u2026",
+        no_comments_yet: "\u8fd8\u6ca1\u6709\u8bc4\u8bba\uff0c\u6c99\u53d1\u7b49\u4f60\u6765\u62a2",
+        repost_reason: "\u8bf7\u8f93\u5165\u8f6c\u53d1\u7406\u7531",
+        hot_posts_title: "\u88ab\u9876\u8d77\u6765\u7684\u8bc4\u8bba",
+        comments_zero: "\u6682\u65e0\u8bc4\u8bba",
+        comments_one: "1\u6761\u8bc4\u8bba",
+        comments_multiple: "{num}\u6761\u8bc4\u8bba",
+        reposts_zero: "\u6682\u65e0\u8f6c\u53d1",
+        reposts_one: "1\u6761\u8f6c\u53d1",
+        reposts_multiple: "{num}\u6761\u8f6c\u53d1",
+        weibo_reposts_zero: "\u6682\u65e0\u65b0\u6d6a\u5fae\u535a",
+        weibo_reposts_one: "1\u6761\u65b0\u6d6a\u5fae\u535a",
+        weibo_reposts_multiple: "{num}\u6761\u65b0\u6d6a\u5fae\u535a",
+        qqt_reposts_zero: "\u6682\u65e0\u817e\u8baf\u5fae\u535a",
+        qqt_reposts_one: "1\u6761\u817e\u8baf\u5fae\u535a",
+        qqt_reposts_multiple: "{num}\u6761\u817e\u8baf\u5fae\u535a"
+    },
+    L = function(e, t, n, r) {
+        w.ajax("GET", e, t, n ||
+        function() {},
+        r)
+    },
+    A = function(e, t, n, r) {
+        w.ajax("POST", e, t, n ||
+        function() {},
+        r)
+    },
+    O = [],
+    M,
+    _ = [],
+    D = function(t) {
+        if (! ("WebSocket" in e && i)) return ! 1;
+        _.push(i.stringify(t)),
+        M || (M = w.webSocket = new WebSocket("ws://ws.duoshuo.com:8201/"), M.onopen = function() {
+            var e;
+            if (M.readyState === 1) while (e = _.shift()) M.send(e)
+        },
+        M.onmessage = function(e) {
+            try {
+                var t = 0,
+                n, r = i.parse(e.data)
+            } catch(s) {
+                return
+            }
+            switch (r.type) {
+            case "post":
+                for (; t < w.pagelets.length; t++) n = w.pagelets[t],
+                n.threadId == r.thread_id && n.onMessage(r);
+                break;
+            case "notification":
+                O.push(r),
+                lt();
+                break;
+            default:
+            }
+        },
+        e.addEventListener("beforeunload",
+        function() {
+            M.close()
+        })),
+        M.onopen()
+    },
+    P = w.Collections = {},
+    H = w.Views = {},
+    B = w.Callbacks = {},
+    j = w.openDialog = function(e) {
+        return w.dialog !== n && w.dialog.el.remove(),
+        w.dialog = (new H.Dialog('<div class="ds-dialog"><div class="ds-dialog-inner ds-rounded"><div class="ds-dialog-body">' + e + '</div><div class="ds-dialog-footer"><a href="http://duoshuo.com/" target="_blank" class="ds-logo"></a><span>\u793e\u4f1a\u5316\u8bc4\u8bba\u6846</span></div><a class="ds-dialog-close" href="javascript:void(0)" title="\u5173\u95ed"></a></div></div>')).open()
+    },
+    F = w.injectScript = function(r, i) {
+        var s = t.createElement("script"),
+        o = t.head || t.getElementsByTagName("head")[0] || t.documentElement;
+        s.type = "text/javascript",
+        s.src = r,
+        s.async = "async",
+        s.charset = "utf-8",
+        i && (s.onload = s.onreadystatechange = function(t, r) {
+            if (r || !s.readyState || /loaded|complete/.test(s.readyState)) s.onload = s.onreadystatechange = null,
+            o && s.parentNode && o.removeChild(s),
+            s = n,
+            r || i.call(e)
+        }),
+        o.insertBefore(s, o.firstChild)
+    },
+    I = w.log = function(e) {
+        typeof console == "object" && console.log(e)
+    },
+    q = w.smilies = {},
+    R = ["EmbedThread", "RecentComments", "RecentVisitors", "TopUsers", "TopThreads", "LoginWidget", "ThreadCount"],
+    U = 0,
+    z,
+    W = function() {
+        var e = {},
+        t = 0;
+        for (; t < arguments.length; t++) arguments[t] && ft(e, arguments[t]);
+        var n = w.param(e);
+        return n ? "?" + n: ""
+    },
+    X = function() {
+        var e = w.getCookie("duoshuo_token");
+        return e ? {
+            jwt: e
+        }: z.remote_auth ? {
+            short_name: z.short_name,
+            remote_auth: z.remote_auth
+        }: n
+    },
+    V = function() {
+        return ! z && (z = e.duoshuoQuery) && tt.trigger("queryDefined"),
+        z
+    };
+    for (var $ in Object.prototype) return alert("Object.prototype\u4e0d\u4e3a\u7a7a\uff0c\u8bf7\u4e0d\u8981\u7ed9Object.prototype\u8bbe\u7f6e\u65b9\u6cd5");
+    var J = w.templates = {
+        userUrl: function(e) {
+            return e.url
+        },
+        avatarUrl: function(e, t) {
+            return e.avatar_url || nt.data.default_avatar_url
+        },
+        userAnchor: function(e) {
+            var t = J.userUrl(e);
+            return t ? '<a rel="nofollow author" target="_blank" href="' + p(t) + '">' + p(e.name) + "</a>": p(e.name)
+        },
+        avatarImg: function(e, t) {
+            return '<img src="' + p(J.avatarUrl(e, t)) + '" alt="' + p(e.name) + '"' + (t ? ' style="width:' + t + "px;height:" + t + 'px"': "") + "/>"
+        },
+        avatar: function(e, t) {
+            var n = J.avatarImg(e, t),
+            r = J.userUrl(e);
+            return r ? '<a rel="nofollow author" target="_blank" href="' + p(r) + '" ' + (e.user_id ? " onclick=\"this.href='" + w.hostUrl + "/user-url/?user_id=" + e.user_id + "';\"": "") + ' title="' + p(e.name) + '">' + n + "</a>": n
+        },
+        timeHtml: function(e, t) {
+            return e ? t ? '<a href="' + t + '" target="_blank" rel="nofollow" class="ds-time" datetime="' + e + '" title="' + w.fullTime(e) + '">' + w.elapsedTime(e) + "</a>": '<span class="ds-time" datetime="' + e + '" title="' + w.fullTime(e) + '">' + w.elapsedTime(e) + "</span>": ""
+        },
+        serviceIcon: function(e, t) {
+            return '<a href="javascript:void(0)" class="ds-service-icon' + (t ? "-grey": "") + " ds-" + e + '" data-service="' + e + '" title="' + w.sourceName[e] + '"></a>'
+        },
+        loginButtons: function(e) {
+            return '<div class="ds-login-buttons"><p>\u793e\u4ea4\u5e10\u53f7\u767b\u5f55:</p><div class="ds-social-links">' + J.serviceList() + J.additionalServices() + "</div></div>"
+        },
+        poweredBy: function(e) {
+            return '<p class="ds-powered-by"><a href="http://duoshuo.com" target="_blank" rel="nofollow">' + p(e) + "</a></p>"
+        },
+        indicator: g('<div id="ds-indicator"></div>'),
+        waitingImg: g('<div id="ds-waiting"></div>'),
+        serviceList: function(e) {
+            var t = '<ul class="ds-service-list">',
+            n = ["weibo", "qq", "renren", "douban"],
+            r = 0;
+            for (; r < n.length; r++) t += J.loginItem(n[r], e);
+            return t + '<li><a class="ds-more-services" href="javascript:void(0)">\u66f4\u591a\u00bb</a></li>' + "</ul>"
+        },
+        additionalServices: function(e) {
+            var t = '<ul class="ds-service-list ds-additional-services">',
+            n = ["kaixin", "netease", "sohu", "baidu", "google"],
+            r = 0;
+            for (; r < n.length; r++) t += J.loginItem(n[r], e);
+            return t + "</ul>"
+        },
+        loginItem: function(e, t) {
+            var n = J[t ? "bindUrl": "loginUrl"](e);
+            return '<li><a href="' + n + '" rel="nofollow" class="ds-service-link ds-' + e + '">' + w.serviceNames[e] + (rt.data.social_uid[e] ? ' <span class="ds-icon ds-icon-ok"></span>': "") + "</a>" + "</li>"
+        },
+        loginUrl: function(e, t) {
+            return t || (t = {}),
+            z.sso && z.sso.login && (t.sso = 1, t.redirect_uri = z.sso.login),
+            w.hostUrl + "/login/" + e + "/" + W(t)
+        },
+        bindUrl: function(e) {
+            return w.hostUrl + "/bind/" + e + "/" + W(z.sso && z.sso.login ? {
+                sso: 1,
+                redirect_uri: z.sso.login
+            }: null, X())
+        },
+        logoutUrl: function() {
+            return w.hostUrl + "/logout/" + W(z.sso && z.sso.logout ? {
+                sso: 1,
+                redirect_uri: z.sso.logout
+            }: null)
+        },
+        likePost: function(e) {
+            return '<a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>' + k.like + (e.likes > 0 ? "(" + e.likes + ")": "") + "</a>"
+        },
+        ctxPost: function(e, t, n) {
+            var r = K(e);
+            return '<li class="ds-ctx-entry"' + (n ? ' style="display:none"': "") + ' data-post-id="' + e.post_id + '"><div class="ds-avatar">' + J.avatar(r) + '</div><div class="ds-ctx-body"><div class="ds-ctx-head">' + J.userAnchor(r) + J.timeHtml(e.created_at, e.url) + (t >= 0 ? '<div class="ds-ctx-nth" title="' + w.fullTime(e.created_at) + '">' + (t + 1) + k.floor + "</div>": "") + '</div><div class="ds-ctx-content">' + e.message + (t >= 0 ? '\u3000\u3000\u3000\u3000\u3000\u3000\u3000<div class="ds-comment-actions' + (e.vote > 0 ? " ds-post-liked": "") + '">' + J.likePost(e) + ' <a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>' + k.repost + "</a>" + ' <a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>' + k.reply + "</a>" + "</div>": "") + "</div></div></li>"
+        }
+    },
+    K = function(e) {
+        return ut[e.author_id] && ut[e.author_id].data || e.author
+    },
+    Q = function(e) {
+        var t = [];
+        for (var n in e) t.push('<input type="hidden" name="' + n + '" value="' + p(e[n]) + '" />');
+        return t.join("\n")
+    };
+    for (; U < R.length; U++) w[R[U]] = function(e) {
+        return function(t, n) {
+            n = n || {},
+            n.type = e,
+            t && !N[t] && (N[t] = n),
+            w.initSelector && w.initSelector(t, n)
+        }
+    } (R[U]),
+    w["create" + R[U]] = function(e) {
+        return function(n, r) {
+            var i = t.createElement(n);
+            for (var s in r) i.setAttribute("data-" + s, r[s]);
+            return w[e](i),
+            i
+        }
+    } (R[U]);
+    w.RecentCommentsWidget = w.RecentComments;
+    var G = 0,
+    Y = w.Class = function() {};
+    Y.extend = function(e) {
+        function r() { ! G && this.init && this.init.apply(this, arguments)
+        }
+        G = 1;
+        var t = new this;
+        G = 0;
+        for (var n in e) t[n] = e[n];
+        return r.prototype = t,
+        r.prototype.constructor = r,
+        r.extend = arguments.callee,
+        r
+    };
+    var Z = w.Event = Y.extend({
+        on: function(e, t) {
+            var r = this.handlers || (this.handlers = {});
+            return r[e] === n && (r[e] = []),
+            r[e].push(t),
+            this
+        },
+        trigger: function(e, t) {
+            var n = (this.handlers || (this.handlers = {}))[e];
+            if (n) for (var r = 0; r < n.length; r++) if (n[r].call(this, t) === !1) break;
+            return this
+        }
+    }),
+    et = w.Model = Z.extend({
+        init: function(e) {
+            this.data = e
+        },
+        reset: function(e) {
+            this.data = e,
+            this.trigger("reset")
+        },
+        remove: function(e) {
+            this.data.splice(e, 1),
+            this.trigger("reset")
+        },
+        set: function(e, t) {
+            if (t === n) for (var r in e) this.data[r] = e[r];
+            else this.data[e] = t;
+            this.trigger("reset")
+        }
+    }),
+    tt = w.events = new Z,
+    nt = w.site = new et,
+    rt = w.visitor = new et,
+    it = w.unread = new et,
+    st = w.threads = {},
+    ot = w.postPool = {},
+    ut = w.users = {};
+    tt.on("queryDefined",
+    function() {
+        var e = z.short_name;
+        w.hostUrl = e ? l + "//" + e + "." + w.DOMAIN: w.REMOTE,
+        z.theme && pt(z.theme);
+        if (o) {
+            var t = o["ds_site_" + e],
+            n = o["ds_lang_" + e];
+            t && nt.reset(i.parse(t)),
+            n && ft(k, i.parse(n))
+        }
+    }),
+    V(),
+    w.loaded.jQuery && (w.jQuery = e.jQuery),
+    w.require("jQuery",
+    function() {
+        function dt(e, t, n) {
+            if (e.find(".ds-post[data-post-id=" + t.post_id + "]")[0]) return;
+            return e.find(".ds-post-placeholder").remove(),
+            i(J.post(t, n)).hide()[n.order == "asc" ? "appendTo": "prependTo"](e).slideDown(function() {})
+        }
+        function vt(e, t) {
+            var n;
+            this.delegate("a.ds-post-likes", "click",
+            function(e) {
+                if (ct()) return gt(),
+                !1;
+                var t = i(this).parent();
+                return liked = t.hasClass("ds-post-liked"),
+                matches = i(this).html().match(/\((\d+)\)/),
+                likes = (matches ? parseInt(matches[1]) : 0) + (liked ? -1 : 1),
+                A("/api/posts/vote", {
+                    post_id: t.closest(".ds-ctx-entry, .ds-post-self").attr("data-post-id"),
+                    vote: liked ? 0 : 1
+                }),
+                i(this).html(i(this).html().replace(/\(\d+\)/, "") + (likes ? "(" + likes + ")": "")),
+                t[liked ? "removeClass": "addClass"]("ds-post-liked"),
+                !1
+            }).delegate("a.ds-post-repost", "click",
+            function(e) {
+                var t = i(this).closest(".ds-post-self"),
+                n = ot[t.attr("data-post-id")];
+                return w.repostDialog(n, ""),
+                !1
+            }).delegate("a.ds-post-delete", "click",
+            function(t) {
+                if (confirm("\u786e\u5b9a\u8981\u5220\u9664\u8fd9\u6761\u8bc4\u8bba\u5417\uff1f")) {
+                    var n = i(this).closest(".ds-post-self");
+                    A("/api/posts/remove", {
+                        post_id: n.attr("data-post-id")
+                    }),
+                    n.parent().fadeOut(200,
+                    function() {
+                        e.data.comments--,
+                        e.updateCounter("duoshuo"),
+                        i(this).remove()
+                    })
+                }
+                return ! 1
+            }).delegate("a.ds-post-report", "click",
+            function(e) {
+                if (confirm("\u786e\u5b9a\u8981\u4e3e\u62a5\u8fd9\u6761\u8bc4\u8bba\u5417\uff1f")) {
+                    var t = i(this).closest(".ds-post-self");
+                    A("/api/posts/report", {
+                        post_id: t.attr("data-post-id")
+                    }),
+                    alert("\u611f\u8c22\u60a8\u7684\u53cd\u9988\uff01")
+                }
+                return ! 1
+            }).delegate("a.ds-post-reply", "click",
+            function(r) {
+                var s = i(this),
+                o = s.closest(".ds-comment-actions");
+                if (o.hasClass("ds-reply-active")) n.el.fadeOut(200,
+                function() {
+                    i(this).detach()
+                }),
+                o.removeClass("ds-reply-active");
+                else {
+                    var u = s.closest(".ds-ctx-entry, .ds-post-self");
+                    n ? n.actionsBar.removeClass("ds-reply-active") : (n = new H.Replybox(e), n.render(!0).el.addClass("ds-inline-replybox").detach()),
+                    n.el.find("[name=parent_id]").val(u.attr("data-post-id")),
+                    n.el.show().appendTo(s.closest(".ds-ctx-body, .ds-comment-body")).find("textarea").focus(),
+                    n.actionsBar = o.addClass("ds-reply-active"),
+                    t.max_depth <= 1 ? n.postList = e.postList.el: (n.postList = u.siblings(".ds-children"), n.postList[0] || (n.postList = i('<ul class="ds-children"></ul>').insertAfter(u)))
+                }
+                return ! 1
+            }).delegate("a.ds-weibo-comments", "click",
+            function(e) {
+                var n = i(this).closest(".ds-post-self"),
+                r = n.attr("data-post-id"),
+                s = n.data("source");
+                if (n.attr("data-root-id") == 0) {
+                    var o = n.siblings(".ds-children");
+                    o[0] ? o.remove() : (o = i('<ul class="ds-children"></ul>').insertAfter(n), L("/api/posts/listComments", bt({
+                        post_id: r
+                    }),
+                    function(e) {
+                        l(e),
+                        o.append(i.map(e.response,
+                        function(e) {
+                            return J.post(e, t)
+                        }).join(""))
+                    }))
+                }
+                return ! 1
+            }).delegate("a.ds-weibo-reposts", "click",
+            function(t) {
+                var n = i(this).closest(".ds-post-self"),
+                r = ot[n.attr("data-post-id")],
+                s = r.data.source;
+                if (!rt.data.social_uid[s == "qqt" ? "qq": s]) {
+                    mt(s);
+                    return
+                }
+                var o = r.data.root_id,
+                u = o != "0" ? ot[o] : r,
+                a = "";
+                if (o != "0") {
+                    var f = K(r.data);
+                    a = (s == "weibo" ? "//@" + f.name: "|| @" + f.qqt_account) + ":" + r.data.message
+                }
+                return w.repostDialog(u, a, e, s),
+                !1
+            }).delegate("a.ds-expand", "click",
+            function(e) {
+                var t = i(this).parent();
+                return t.siblings().show(),
+                t.remove(),
+                !1
+            }),
+            x.touch || this.delegate("a.ds-comment-context, .ds-avatar, .ds-user-name", "mouseenter",
+            function(t) {
+                var n = this;
+                if (bubbleOutTimer && $.owner == n) clearTimeout(bubbleOutTimer),
+                bubbleOutTimer = 0;
+                else {
+                    var r = i(n);
+                    Y = setTimeout(function() {
+                        Y = 0,
+                        $.owner = n,
+                        tt();
+                        var t = r.offset(),
+                        i = e.el.offset(),
+                        s = r.innerWidth() / 2,
+                        o = e.el.innerHeight() - (t.top - i.top) + 6,
+                        u = t.left - i.left - 35 + (s > 35 ? 35 : s);
+                        try {
+                            if (r.hasClass("ds-comment-context")) G.attr("id", "ds-ctx-bubble").attr("data-post-id", r.attr("data-post-id")).html('<ul id="ds-ctx">' + J.ctxPost(ot[r.attr("data-parent-id")].data) + "</ul>" + '<div class="ds-bubble-footer"><a class="ds-ctx-open" href="javascript:void(0);">\u67e5\u770b\u5bf9\u8bdd</a></div>');
+                            else if (r.hasClass("ds-avatar") || r.hasClass("ds-user-name")) {
+                                var a = {},
+                                f = a.user_id = r.attr("data-user-id");
+                                if (!f) throw "no info";
+                                G.attr("id", "ds-user-card").attr("data-user-id", f).empty(),
+                                ut[f] ? G.html(J.userInfo(ut[f].data)) : L("/api/users/profile", bt(a),
+                                function(e) {
+                                    var t = e.response;
+                                    ut[f] ? ut[f].set(t) : ut[f] = new et(t),
+                                    $.owner == n && G.html(J.userInfo(t))
+                                })
+                            }
+                            $.css({
+                                bottom: o,
+                                left: u
+                            }).appendTo(e.innerEl)
+                        } catch(l) {
+                            $.detach()
+                        }
+                    },
+                    200)
+                }
+            }).delegate("a.ds-comment-context, .ds-avatar, .ds-user-name", "mouseleave",
+            function() {
+                Y ? (clearTimeout(Y), Y = 0) : bubbleOutTimer || bubbleOut()
+            })
+        }
+        function mt(e) {
+            var t = J[ct() ? "loginUrl": "bindUrl"](e);
+            x.authInWin && O(e, t) || (r.href = t)
+        }
+        function gt() {
+            var e = j("<h2>\u793e\u4ea4\u5e10\u53f7\u767b\u5f55</h2>" + J.serviceList() + J.additionalServices()).el.find(".ds-dialog").css("width", "300px");
+            M(e)
+        }
+        function bt(e) {
+            var n = {
+                require: "site,visitor,nonce,serverTime,lang" + (yt++?"": ",unread,log,extraCss"),
+                site_ims: o && o["ds_site_" + z.short_name + ":timestamp"],
+                lang_ims: o && o["ds_lang_" + z.short_name + ":timestamp"],
+                referer: t.referrer
+            };
+            z.stylePatch && (n.style_patch = z.stylePatch);
+            for (var r in n) n[r] && (!S || encodeURIComponent(n[r]).length < 200) && (e[r] = n[r]);
+            return e
+        }
+        var i = w.jQuery,
+        s = i(e),
+        a = i(t),
+        l = w.loadRequire = function(e) {
+            e.serverTime && (c = (new Date).getTime() - e.serverTime * 1e3),
+            e.visitor && (!rt.data && e.visitor.user_id && u && !u.checkPermission() && D({
+                logged_user_id: e.visitor.user_id
+            }), rt.reset(e.visitor)),
+            e.site && (nt.reset(e.site), ht("ds_site_" + z.short_name, e.site, e.serverTime)),
+            !w.theme && nt.data.theme && pt(nt.data.theme),
+            e.lang && (ft(k, e.lang), ht("ds_lang_" + z.short_name, e.lang, e.serverTime));
+            if (e.stylesheets) for (var t = 0; t < e.stylesheets.length; t++) w.injectStylesheet(e.stylesheets[t]);
+            e.nonce && (w.nonce = e.nonce),
+            e.style && w.setCustomStyle((e.style || "") + w.compileStyle(z.component_style)),
+            e.unread && it.reset(e.unread)
+        },
+        h = function(e) {
+            e.stopPropagation()
+        },
+        g = function(e) { (e.ctrlKey && e.which == 13 || e.which == 10) && i(this.form).trigger("submit")
+        },
+        y = function(e) {
+            var t = i(this);
+            t.height(Math.max(54, t.next(".ds-hidden-text").text(this.value).height() + 27))
+        },
+        O = function(t, n) {
+            var i = {
+                weibo: [760, 600],
+                renren: [420, 322],
+                qq: [504, 445],
+                netease: [810, 645],
+                sohu: [972, 600],
+                google: [600, 440],
+                taobao: [480, 585]
+            } [t] || [550, 400];
+            return e.open(n + (n.indexOf("?") == -1 ? "?": "&") + w.param({
+                origin: r.origin || "http://" + r.host
+            }), "_blank", "width=" + i[0] + ",height=" + i[1] + ",toolbar=no,menubar=no,location=yes")
+        },
+        M = function(e, t) {
+            x.authInWin && e.find(t || "a.ds-service-link").click(function(e) {
+                var t = this.href.match(/\/(login|bind)\/(\w+)\//i);
+                if (!t || !w.serviceNames[t[2]]) return;
+                return ! O(t[2], this.href)
+            })
+        },
+        _ = function(e) {
+            return x.touch && e.addClass("ds-touch"),
+            T("transition") || e.addClass("ds-no-transition"),
+            S && e.addClass("ds-ie6"),
+            i.support.opacity || e.addClass("ds-no-opacity"),
+            e
+        },
+        B = function(e) {
+            if (!x.placeholder) {
+                var t = e.attr("placeholder");
+                e.val(t).focus(function() {
+                    this.value === t && (this.value = "")
+                }).blur(function() {
+                    this.value === "" && (this.value = t)
+                })
+            }
+            return e
+        };
+        if (e.postMessage) {
+            var F = function(e) {
+                if (e.origin === "http://duoshuo.com") switch (e.data.type) {
+                case "login":
+                    r.href = e.data.redirectUrl;
+                    break;
+                default:
+                }
+            };
+            e.addEventListener ? e.addEventListener("message", F, !1) : e.attachEvent && e.attachEvent("onmessage", F)
+        }
+        w.scrollTo = function(e) {
+            var t = e.offset().top; (t < s.scrollTop() || t > s.scrollTop() + s.height()) && i("html, body").animate({
+                scrollTop: t - 40
+            },
+            200, "swing")
+        },
+        w.toJSON = function(e) {
+            var t = /\r?\n/g,
+            n = /^(?:color|date|datetime|datetime-local|email|hidden|month|number|password|range|search|tel|text|time|url|week)$/i,
+            r = /^(?:select|textarea)/i,
+            s = e.map(function() {
+                return this.elements ? i.makeArray(this.elements) : this
+            }).filter(function() {
+                return this.name && !this.disabled && (this.checked || r.test(this.nodeName) || n.test(this.type))
+            }).map(function(e, n) {
+                var r = i(this).val();
+                return r == null ? null: i.isArray(r) ? i.map(r,
+                function(e, r) {
+                    return {
+                        name: n.name,
+                        value: e.replace(t, "\r\n")
+                    }
+                }) : {
+                    name: n.name,
+                    value: r.replace(t, "\r\n")
+                }
+            }).toArray(),
+            o = {};
+            return i.each(s,
+            function() {
+                o[this.name] = this.value
+            }),
+            o
+        };
+        var R = w.Widget = Z.extend({
+            init: function(e, t) {
+                this.el = e,
+                this.options = t || {},
+                this.render()
+            },
+            render: function() {},
+            reset: function() {},
+            load: function(e) {
+                switch (e.code) {
+                case 0:
+                    l(e),
+                    this.onload(e);
+                    break;
+                default:
+                    this.onError(e)
+                }
+            },
+            onload: function(e) {
+                this.el.html(J[this.tmpl].call(J, e.response, i.extend(this.options, e.options)))
+            },
+            onMessage: function() {},
+            onError: function(e) {
+                I("\u51fa\u9519\u5566(" + e.code + "): " + e.errorMessage),
+                e.errorTrace && I(e.errorTrace)
+            }
+        }),
+        U = function(e) {
+            var t = {
+                "unread-comments": {
+                    title: "\u65b0\u7559\u8a00\u53ca\u56de\u590d",
+                    apiUrl: "/api/users/unreadComments",
+                    tmpl: function(e) {
+                        return '<li data-thread-id="' + e.thread.thread_id + '">' + i.map(e.authors, J.userAnchor).join("\u3001") + ' \u5728 <a class="ds-read" href="' + e.thread.url + '#comments" target="_blank">' + p(e.thread.title || "\u65e0\u6807\u9898") + '</a> \u4e2d\u56de\u590d\u4e86\u4f60 <a class="ds-delete ds-read" title="\u77e5\u9053\u4e86" href="javascript:void(0)">\u77e5\u9053\u4e86</a></li>'
+                    },
+                    read: function(e) {
+                        var t = e.attr("data-thread-id");
+                        A("/api/threads/read", {
+                            thread_id: t
+                        }),
+                        it.data.comments--
+                    }
+                },
+                "unread-notifications": {
+                    title: "\u7cfb\u7edf\u6d88\u606f",
+                    apiUrl: "/api/users/unreadNotifications",
+                    tmpl: function(e) {
+                        return '<li data-notification-id="' + e.notification_id + '" data-notification-type="' + e.type + '">' + e.content + ' <a class="ds-delete ds-read" title="\u77e5\u9053\u4e86" href="javascript:void(0)">\u77e5\u9053\u4e86</a></li>'
+                    },
+                    read: function(e) {
+                        var t = e.attr("data-notification-id");
+                        A("/api/notifications/read", {
+                            notification_id: t
+                        }),
+                        it.data.notifications--
+                    }
+                }
+            } [e],
+            n = j("<h2>" + t.title + "</h2>" + '<ul class="ds-unread-list"></ul>');
+            n.on("close", w.resetNotify);
+            var r = n.el.find(".ds-unread-list").delegate(".ds-delete", "click",
+            function(e) {
+                return i(this).parent().remove(),
+                r.children().length === 0 && n.close(),
+                !1
+            }).delegate(".ds-read", "click",
+            function(e) {
+                t.read(i(this).parent())
+            });
+            i("#ds-notify").hide(),
+            L(t.apiUrl, {},
+            function(e) {
+                n.el.find(".ds-unread-list").html(i.map(e.response, t.tmpl).join("\n"))
+            }),
+            u && u.checkPermission() && u.requestPermission(lt)
+        };
+        w.resetNotify = function() {
+            var e = i("#ds-notify"),
+            n = it.data;
+            e[0] || (e = i('<div id="ds-notify"></div>').css({
+                hidden: {
+                    display: "none"
+                },
+                "top-right": {
+                    top: "24px",
+                    right: "24px"
+                },
+                "bottom-right": {
+                    bottom: "24px",
+                    right: "24px"
+                }
+            } [nt.data.notify_position]).delegate(".ds-notify-unread a", "click",
+            function(e) {
+                return U(i(this).data("type")),
+                !1
+            }).appendTo(t.body)),
+            e.html('<div id="ds-reset"><a class="ds-logo" href="http://duoshuo.com/" target="_blank" title="\u591a\u8bf4"></a><ul class="ds-notify-unread"><li' + (n.comments ? "": ' style="display:none;"') + '><a data-type="unread-comments" href="javascript:void(0);">\u4f60\u6709' + n.comments + "\u6761\u65b0\u56de\u590d</a></li><li" + (n.notifications ? "": ' style="display:none;"') + '><a data-type="unread-notifications" href="javascript:void(0);">\u4f60\u6709' + n.notifications + "\u6761\u7cfb\u7edf\u6d88\u606f</a></li></ul></div>")[(n.comments || n.notifications) && nt.data.notify_position !== "hidden" && !i(".ds-dialog")[0] ? "show": "hide"]()
+        },
+        it.on("reset", w.resetNotify),
+        J.replybox = function(e, t) {
+            var n = e.options,
+            r = rt.data,
+            i = [],
+            s = "",
+            o,
+            u = {
+                thread_id: e.threadId,
+                parent_id: "",
+                nonce: w.nonce
+            };
+            for (var a in r.repostOptions) r.repostOptions[a] && (i.push(a), o = 1),
+            s += J.serviceIcon(a, !r.repostOptions[a]);
+            return '<div class="ds-replybox"><a class="ds-avatar"' + (ct() ? ' href="javascript:void(0);" onclick="return false"': ' href="' + w.REMOTE + "/settings/avatar/" + W(X()) + '" target="_blank" title="\u8bbe\u7f6e\u5934\u50cf"') + ">" + J.avatarImg(r) + "</a>" + '<form method="post">' + Q(u) + '<div class="ds-textarea-wrapper ds-rounded-top">' + '<textarea name="message" title="Ctrl+Enter\u5feb\u6377\u63d0\u4ea4" placeholder="' + p(k.leave_a_message) + '"></textarea>' + '<pre class="ds-hidden-text"></pre>' + "</div>" + '<div class="ds-post-toolbar">' + '<div class="ds-post-options ds-gradient-bg">' + '<span class="ds-sync">' + (!ct() && s ? '<input id="ds-sync-checkbox' + (t ? "-inline": "") + '" type="checkbox" name="repost" ' + (o ? 'checked="checked" ': "") + 'value="' + i.join(",") + '"> <label for="ds-sync-checkbox' + (t ? "-inline": "") + '">' + k.share_to + "</label>" + s: "") + "</span>" + "</div>" + '<button class="ds-post-button" type="submit">' + p(k.post) + "</button>" + '<div class="ds-toolbar-buttons">' + (n.use_smilies ? '<a class="ds-toolbar-button ds-add-emote" title="\u63d2\u5165\u8868\u60c5"></a>': "") + (n.use_images && n.parse_html_enabled ? '<a class="ds-toolbar-button ds-add-image" title="\u63d2\u5165\u56fe\u7247"></a>': "") + "</div>" + "</div>" + "</form>" + "</div>"
+        },
+        H.Replybox = function(e) {
+            this.embedThread = e
+        },
+        H.Replybox.prototype = {
+            render: function(e) {
+                function T(e) {
+                    e.data("submitting", !0),
+                    e.find(".ds-post-button").addClass("ds-waiting").html(k.posting)[0].disabled = !0
+                }
+                function N(e) {
+                    e.data("submitting", !1),
+                    e.find(".ds-post-button").removeClass("ds-waiting").html(k.post)[0].disabled = !1
+                }
+                var n = this,
+                r = n.embedThread,
+                s = r.options,
+                u = function(e) {
+                    w.require("smilies",
+                    function() {})
+                },
+                a = n.el = i(J.replybox(r, e)).click(u),
+                f = a.find("form"),
+                l = f.find("input[type=checkbox]")[0],
+                c = f.find("a.ds-service-icon, a.ds-service-icon-grey"),
+                h = B(f.find("textarea")).focus(u).keyup(g).keyup(y).bind("focus mousedown mouseup keyup", m),
+                d = a.find(".ds-add-emote").click(function(e) {
+                    var r = w.smiliesTooltip;
+                    return d.toggleClass("ds-expanded").hasClass("ds-expanded") ? (r || (r = w.smiliesTooltip = new H.SmiliesTooltip, r.render(), w.require("smilies",
+                    function() {
+                        r.reset("\u5fae\u535a-\u9ed8\u8ba4")
+                    })), r.replybox = n, r.el.appendTo(t.body).css({
+                        top: n.el.offset().top + n.el.outerHeight() + 4 + "px",
+                        left: n.el.find(".ds-textarea-wrapper").offset().left + "px"
+                    }), i(t.body).click(E)) : E(e),
+                    !1
+                }),
+                b = a.find(".ds-add-image").click(function(e) {
+                    var n = h[0],
+                    r = n.value,
+                    i = "\u8bf7\u8f93\u5165\u56fe\u7247\u5730\u5740",
+                    s = '<img src="' + i + '" />';
+                    if (t.selection) {
+                        n.value = r.substring(0, v.start) + s + r.substring(v.end, r.length),
+                        n.value = n.value.replace("\u8bf4\u70b9\u4ec0\u4e48\u5427 ...", ""),
+                        n.focus();
+                        var o = t.selection.createRange();
+                        o.collapse(),
+                        o.findText(i),
+                        o.select()
+                    } else {
+                        n.value = r.substring(0, n.selectionStart) + s + r.substring(n.selectionEnd);
+                        var u = n.value.search(i);
+                        n.setSelectionRange(u, u + i.length),
+                        n.focus()
+                    }
+                    e.preventDefault()
+                }),
+                E = n.hideSmilies = function(e) {
+                    d.removeClass("ds-expanded"),
+                    w.smiliesTooltip.el.detach(),
+                    i(t.body).unbind("click", E)
+                },
+                S = function(e, t) {
+                    var n = j('<h2>\u793e\u4ea4\u5e10\u53f7\u767b\u5f55</h2><div class="ds-icons-32">' + i.map(["weibo", "qq", "renren", "kaixin", "douban", "netease", "sohu"],
+                    function(e) {
+                        return '<a class="ds-' + e + '" href="' + J.loginUrl(e) + '">' + w.sourceName[e] + "</a>"
+                    }).join("") + "</div>" + (s.deny_anonymous ? "": '<h2>\u4f5c\u4e3a\u6e38\u5ba2\u7559\u8a00</h2><form><div class="ds-control-group"><input type="text" name="author_name" id="ds-dialog-name" value="' + p(rt.data.name) + '" required />' + '<label for="ds-dialog-name">\u540d\u5b57(\u5fc5\u586b)</label>' + "</div>" + (s.require_guest_email ? '<div class="ds-control-group"><input type="email" name="author_email" id="ds-dialog-email" value="' + p(rt.data.email) + '" required />' + '<label for="ds-dialog-email">\u90ae\u7bb1(\u5fc5\u586b)</label>' + "</div>": "") + (s.require_guest_url ? '<div class="ds-control-group"><input type="url" name="author_url" id="ds-dialog-url" placeholder="http://" value="' + p(rt.data.url || "") + '" />' + '<label for="ds-dialog-url">\u7f51\u5740(\u53ef\u9009)</label>' + "</div>": "") + '<button type="submit">\u53d1\u5e03</button>' + "</form>")),
+                    r = n.el.find(".ds-dialog").css("width", "320px");
+                    M(r, ".ds-icons-32 a");
+                    if (!s.deny_anonymous) {
+                        var o = n.el.find("form");
+                        o.submit(function(e) {
+                            var r = o.find("input[name=author_email]").val();
+                            return (r || s.require_guest_email) && !r.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) ? (alert("\u8bf7\u8f93\u5165\u4e00\u4e2a\u6709\u6548\u7684email\u5730\u5740."), !1) : (t(w.toJSON(o)), n.close(), !1)
+                        }),
+                        o.find("input[name=author_name]")[0].focus()
+                    }
+                };
+                s.deny_anonymous && h.focus(function(e) {
+                    if (ct()) {
+                        S(f, C);
+                        var t = function(e) {
+                            e.stopPropagation(),
+                            h.unbind("click", t)
+                        };
+                        h.click(t)
+                    }
+                    return ! 1
+                });
+                var C = function(e) {
+                    T(f),
+                    A("/api/posts/create", i.extend(w.toJSON(f), e),
+                    function(e) {
+                        var t = e.response,
+                        i = dt(n.postList, t, s);
+                        s.order == "asc" == (s.formPosition == "top") && w.scrollTo(i),
+                        ot[t.post_id] = new et(t),
+                        r.data.comments++,
+                        r.updateCounter("duoshuo"),
+                        h.val("").trigger("keyup"),
+                        N(f),
+                        a.hasClass("ds-inline-replybox") && (a.detach(), n.actionsBar.removeClass("ds-reply-active"));
+                        if (o) try {
+                            o.removeItem("ds_draft_" + r.threadId)
+                        } catch(u) {}
+                    },
+                    function(e) {
+                        N(f),
+                        alert(e.errorMessage)
+                    })
+                };
+                f.submit(function(e) {
+                    if (f.data("submitting")) return ! 1;
+                    var t = i.trim(f[0].message.value);
+                    return t == "" || !x.placeholder && t == h.attr("placeholder") ? (alert("\u60a8\u8fd8\u6ca1\u5199\u5185\u5bb9\u5462"), !1) : (ct() ? S(f, C) : C(), !1)
+                });
+                var L = function(e) {
+                    return i(e).hasClass("ds-service-icon-grey") ? null: i(e).attr("data-service")
+                };
+                return c.click(function() {
+                    return i(this).toggleClass("ds-service-icon-grey").toggleClass("ds-service-icon"),
+                    l.value = i.map(c, L).join(","),
+                    l.checked = l.value != "",
+                    !1
+                }),
+                i(l).change(function() {
+                    var e = this.checked;
+                    c[e ? "removeClass": "addClass"]("ds-service-icon-grey")[e ? "addClass": "removeClass"]("ds-service-icon"),
+                    this.value = i.map(c, L).join(",")
+                }),
+                this
+            }
+        },
+        H.Dialog = Z.extend({
+            init: function(e, t) { (this.el = i("#ds-wrapper"))[0] || (this.el = _(i('<div id="ds-wrapper"></div>'))),
+                this.options = i.extend({
+                    width: 600
+                },
+                t),
+                e !== n && i(e).attr("id", "ds-reset").appendTo(this.el)
+            },
+            open: function() {
+                var e = this;
+                e.el.hide().appendTo(t.body).fadeIn(200),
+                S && e.el.css("top", s.scrollTop() + 100),
+                e.el.show().find(".ds-dialog").delegate("a.ds-dialog-close", "click",
+                function(t) {
+                    return e.close(),
+                    !1
+                }).click(h);
+                var n = function(t) {
+                    if (t.which == 27) return e.close(),
+                    !1
+                },
+                r = function(t) {
+                    return e.close(),
+                    !1
+                };
+                return a.keydown(n),
+                i(t.body).click(r),
+                e.close = function(s) {
+                    a.unbind("keydown", n),
+                    i(t.body).unbind("click", r),
+                    e.el.fadeOut(200,
+                    function() {
+                        i(this).remove()
+                    }),
+                    e.trigger("close")
+                },
+                e
+            }
+        }),
+        J.likePanel = function(e) {
+            return e.likes ? '<span class="ds-highlight">' + e.likes + "</span> \u4eba\u559c\u6b22": ""
+        },
+        J.likeTooltip = function(e) {
+            var t = {
+                qzone: "QQ\u7a7a\u95f4",
+                weibo: "\u65b0\u6d6a\u5fae\u535a",
+                qqt: "\u817e\u8baf\u5fae\u535a",
+                renren: "\u4eba\u4eba\u7f51",
+                kaixin: "\u5f00\u5fc3\u7f51",
+                douban: "\u8c46\u74e3\u7f51",
+                baidu: "\u767e\u5ea6\u641c\u85cf",
+                netease: "\u7f51\u6613\u5fae\u535a",
+                sohu: "\u641c\u72d0\u5fae\u535a"
+            },
+            n = [];
+            for (var r in t) n.push('<li><a class="ds-share-to-' + r + " ds-service-link ds-" + r + '" href="' + w.hostUrl + "/share-proxy/?" + w.param({
+                service: r,
+                thread_id: e.thread_id
+            }) + '">' + t[r] + "</a></li>");
+            var i = Math.ceil(n.length / 2);
+            return '<div class="ds-like-tooltip ds-rounded"><p>\u5f88\u9ad8\u5174\u4f60\u80fd\u559c\u6b22\uff0c\u5206\u4eab\u4e00\u4e0b\u5427\uff1a</p><ul>' + n.slice(0, i).join("") + "</ul><ul>" + n.slice(i).join("") + '</ul><p class="ds-like-tooltip-footer"><a class="ds-like-tooltip-close">\u7b97\u4e86</a></p></div>'
+        },
+        H.Meta = function(e) {
+            this.embedThread = e
+        },
+        H.Meta.prototype = {
+            render: function() {
+                var r = this,
+                s = r.embedThread,
+                o = s.data,
+                u = r.el = i('<div class="ds-meta"><a href="javascript:void(0)" class="ds-like-thread-button ds-rounded' + (o.user_vote > 0 ? " ds-thread-liked": "") + '"><span class="ds-icon ds-icon-heart"></span>' + ' <span class="ds-thread-like-text">' + (o.user_vote > 0 ? "\u5df2\u559c\u6b22": "\u559c\u6b22") + '</span><span class="ds-thread-cancel-like">\u53d6\u6d88\u559c\u6b22</span></a><span class="ds-like-panel"></span></div>'),
+                a = u.find(".ds-like-thread-button").click(function(f) {
+                    var l = a.hasClass("ds-thread-liked");
+                    A("/api/threads/vote", {
+                        thread_id: s.threadId,
+                        vote: l ? 0 : 1
+                    },
+                    function(e) {
+                        i.each(e.response.thread,
+                        function(e, t) {
+                            o[e] = t
+                        }),
+                        r.resetLikePanel()
+                    }),
+                    a.toggleClass("ds-thread-liked"),
+                    a.find(".ds-thread-like-text").text(l ? "\u559c\u6b22": "\u5df2\u559c\u6b22");
+                    var c = function(e) {
+                        r.tooltip.detach(),
+                        i(t.body).unbind("click", c)
+                    };
+                    return l ? r.tooltip && c(f) : (r.tooltip === n && (r.tooltip = i(J.likeTooltip(o)).click(h).delegate("a", "click",
+                    function(t) {
+                        switch (this.className) {
+                        case "ds-like-tooltip-close":
+                            c(t);
+                            break;
+                        default:
+                            if (!e.open(this.href, "_blank", "height=500,width=600,top=0,left=0,toolbar=no,menubar=no,resizable=yes,location=yes,status=no")) return
+                        }
+                        return ! 1
+                    })), r.tooltip.appendTo(s.innerEl).css({
+                        top: u.position().top + u.outerHeight() - 4 + "px",
+                        left: 0
+                    }), i(t.body).click(c)),
+                    !1
+                });
+                return r.resetLikePanel(),
+                ct() && u.hide(),
+                r
+            },
+            resetLikePanel: function() {
+                this.el.find(".ds-like-panel").html(J.likePanel(this.embedThread.data))
+            }
+        },
+        J.postListHead = function(e) {
+            var t = e.data,
+            n = e.options;
+            return '<div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc">' + k.latest + '</a><a class="ds-order-asc">' + k.earliest + '</a><a class="ds-order-hot">' + k.hottest + '</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);"></a></li>' + (n.show_reposts && t.reposts ? '<li class="ds-tab"><a class="ds-comments-tab-repost" href="javascript:void(0);"></a></li>': "") + (n.show_weibo && t.weibo_reposts ? '<li class="ds-tab"><a class="ds-comments-tab-weibo" href="javascript:void(0);"></a></li>': "") + (n.show_qqt && t.qqt_reposts ? '<li class="ds-tab"><a class="ds-comments-tab-qqt" href="javascript:void(0);"></a></li>': "") + "</ul>" + "</div>"
+        },
+        H.PostListHead = function(e) {
+            this.embedThread = e
+        },
+        H.PostListHead.prototype = {
+            render: function() {
+                var e = this.embedThread,
+                t = e.options,
+                n = e.postList,
+                r = this.el = i(J.postListHead(e)),
+                s = r.find("ul.ds-comments-tabs").delegate(".ds-tab a", "click",
+                function(t) {
+                    s.find("a.ds-current").removeClass("ds-current"),
+                    n.params.page = 1;
+                    var r = t.currentTarget;
+                    switch (r.className) {
+                    case "ds-comments-tab-duoshuo":
+                        n.params.source = "duoshuo",
+                        e.replybox.el.show();
+                        break;
+                    case "ds-comments-tab-repost":
+                        n.params.source = "repost",
+                        e.replybox.el.hide();
+                        break;
+                    case "ds-comments-tab-weibo":
+                        n.params.source = "weibo",
+                        e.replybox.el.hide();
+                        break;
+                    case "ds-comments-tab-qqt":
+                        n.params.source = "qqt",
+                        e.replybox.el.hide();
+                        break;
+                    default:
+                    }
+                    return i(r).addClass("ds-current"),
+                    n.refetch(),
+                    !1
+                }),
+                o = r.find(".ds-sort").delegate("a", "click",
+                function(e) {
+                    return o.find("a.ds-current").removeClass("ds-current"),
+                    n.params.order = t.order = this.className.replace("ds-order-", ""),
+                    n.params.page = 1,
+                    n.refetch(),
+                    i(this).addClass("ds-current"),
+                    !1
+                });
+                return o.find(".ds-order-" + n.params.order).addClass("ds-current"),
+                this
+            }
+        },
+        H.Paginator = function(e) {
+            e = e || {};
+            var t = this,
+            n = t.el = e.el || i('<div class="ds-paginator"></div>'),
+            r = t.collection = e.collection;
+            n.delegate("a", "click",
+            function(e) {
+                return r.params.page = parseInt(this.innerHTML),
+                r.refetch(),
+                n.find(".ds-current").removeClass("ds-current"),
+                i(this).addClass("ds-current"),
+                !1
+            })
+        },
+        H.Paginator.prototype = {
+            reset: function(e) {
+                function i(e) {
+                    r.push('<a data-page="' + e + '" href="javascript:void(0);">' + e + "</a>")
+                }
+                var t = this.collection.params.page || 1,
+                n, r = [];
+                if (t > 1) {
+                    i(1),
+                    n = t > 4 ? t - 2 : 2,
+                    n > 2 && r.push('<span class="page-break">...</span>');
+                    for (; n < t; n++) i(n)
+                }
+                r.push('<a data-page="' + t + '" href="javascript:void(0);" class="ds-current">' + t + "</a>");
+                if (t < e.pages) {
+                    for (n = t + 1; n <= t + 4 && n < e.pages; n++) i(n);
+                    n < e.pages && r.push('<span class="page-break">...</span>'),
+                    i(e.pages)
+                }
+                this.el.html('<div class="ds-border"></div>' + r.join(" "))[e.pages > 1 ? "show": "hide"]()
+            }
+        },
+        J.smiliesTooltip = function(e) {
+            var t = '<div id="ds-smilies-tooltip"><ul class="ds-smilies-tabs">';
+            for (var n in e) t += "<li><a>" + n + "</a></li>";
+            return t + '</ul><div class="ds-smilies-container"></div></div>'
+        },
+        w.addSmilies = function(e, t) {
+            var n = w.smiliesTooltip;
+            n && n.el.find("ul.ds-smilies-tabs").append("<li><a>" + e + "</a></li>"),
+            w.smilies[e] = t
+        },
+        H.SmiliesTooltip = function() {},
+        H.SmiliesTooltip.prototype = {
+            render: function() {
+                var e = this,
+                n = e.el = i(J.smiliesTooltip(q));
+                return n.click(h).find("ul.ds-smilies-tabs").delegate("a", "click",
+                function(t) {
+                    e.reset(this.innerHTML)
+                }),
+                n.find(".ds-smilies-container").delegate("img", "click",
+                function(n) {
+                    var r = e.replybox,
+                    i = r.el.find("textarea")[0],
+                    s = i.value;
+                    if (t.selection) {
+                        i.value = s.substring(0, v.start) + this.title + s.substring(v.end, s.length),
+                        i.value = i.value.replace(k.leave_a_message, ""),
+                        i.focus();
+                        var o = t.selection.createRange();
+                        o.moveStart("character", v.start + this.title.length),
+                        o.collapse(),
+                        o.select()
+                    } else {
+                        var u = i.selectionStart + this.title.length;
+                        i.value = s.substring(0, i.selectionStart) + this.title + s.substring(i.selectionEnd),
+                        i.setSelectionRange(u, u)
+                    }
+                    r.hideSmilies(),
+                    i.focus()
+                }),
+                this
+            },
+            reset: function(e) {
+                var t = this.el.find("ul.ds-smilies-tabs");
+                t.find("a.ds-current").removeClass("ds-current"),
+                t.find("a").filter(function() {
+                    return this.innerHTML == e
+                }).addClass("ds-current");
+                var n = "<ul>";
+                return i.each(q[e],
+                function(t, r) {
+                    var i = e.indexOf("\u5fae\u535a") === 0 ? "http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/" + r.replace("_org", "_thumb") : b + "/images/smilies/" + r;
+                    e === "WordPress" && (t = " " + t + " "),
+                    n += '<li><img src="' + i + '" title="' + p(t) + '" /></li>'
+                }),
+                n += "</ul>",
+                this.el.find(".ds-smilies-container").html(n),
+                this
+            }
+        },
+        J.postPlaceholder = function() {
+            return '<li class="ds-post ds-post-placeholder">' + k.no_comments_yet + "</li>"
+        },
+        J.post = function(e, t) {
+            var n = K(e),
+            r = n.user_id ? ' data-user-id="' + n.user_id + '"': "",
+            s = n.qqt_account || "",
+            o = J.timeHtml(e.created_at, e.url),
+            u = e.parents || [];
+            switch (e.source) {
+            case "duoshuo":
+                o += '<a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>' + k.reply + "</a>" + J.likePost(e) + '<a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>' + k.repost + "</a>" + '<a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>' + k.report + "</a>" + (e.privileges["delete"] ? '<a class="ds-post-delete" href="javascript:void(0);"><span class="ds-icon ds-icon-delete"></span>' + k["delete"] + "</a>": "");
+                break;
+            case "qqt":
+            case "weibo":
+                o += '<a class="ds-weibo-comments" href="javascript:void(0);">' + k.comments + (e.type.match(/\-comment$/) ? "": '(<span class="ds-count">' + e.comments + "</span>)") + "</a>" + '<a class="ds-weibo-reposts" href="javascript:void(0);">' + k.reposts + (e.type.match(/\-comment$/) ? "": '(<span class="ds-count">' + e.reposts + "</span>)") + "</a>";
+                break;
+            default:
+            }
+            return '<li class="ds-post" data-post-id="' + e.post_id + '"><div class="ds-post-self" data-post-id="' + e.post_id + '" data-thread-id="' + e.thread_id + '" data-root-id="' + e.root_id + '" data-source="' + e.source + '"><div class="ds-avatar"' + r + ">" + J.avatar(n) + (w.sourceName[e.source] ? J.serviceIcon(e.source) : "") + '</div><div class="ds-comment-body"><div class="ds-comment-header">' + (n.url ? '<a class="ds-user-name ds-highlight" data-qqt-account="' + s + '" href="' + p(n.url) + '" ' + (n.user_id ? " onclick=\"this.href='" + w.hostUrl + "/user-url/?user_id=" + n.user_id + "';\"": "") + ' rel="nofollow" target="_blank"' + r + ">" + p(n.name) + "</a>": '<span class="ds-user-name"' + r + ' data-qqt-account="'+s+'">'+p(n.name)+"</span>") +"<span class=\"ua\">" + sskadmin(e.author) + "</span><span class=\"ua\">" + ua(e.agent) +"</span><span class=\"ua\">"+ os(e.agent) + "</span>" +"</div>" + (t.max_depth == 1 && t.show_context && u.length ? '<ol id="ds-ctx">' + i.map(u,
+            function(e, t) {
+                return (t == 1 && u.length > 2 ? '<li class="ds-ctx-entry"><a href="javascript:void(0);" class="ds-expand">\u8fd8\u6709' + (u.length - 2) + "\u6761\u8bc4\u8bba</a></li>": "") + (ot[e] ? J.ctxPost(ot[e].data, t, t && t < u.length - 1) : "")
+            }).join("") + "</ol>": "") + "<p>" + (u.length >= t.max_depth && (!t.show_context || t.max_depth > 1) && e.parent_id && ot[e.parent_id] ? '<a class="ds-comment-context" data-post-id="' + e.post_id + '" data-parent-id="' + e.parent_id + '">' + k.reply_to + p(K(ot[e.parent_id].data).name) + ": </a>": "") + e.message + '</p><div class="ds-comment-footer ds-comment-actions' + (e.vote > 0 ? " ds-post-liked": "") + '">' + o + "</div></div></div>" + (t.max_depth > 1 && (e.childrenArray || e.children) && e.source != "weibo" && e.source != "qqt" ? '<ul class="ds-children">' + i.map(e.childrenArray || e.children,
+            function(e) {
+                return ot[e] ? J.post(ot[e].data, t) : ""
+            }).join("") + "</ul>": "") + "</li>"
+        };
+        var $ = i('<div id="ds-bubble"><div class="ds-bubble-content"></div><div class="ds-arrow ds-arrow-down ds-arrow-border"></div><div class="ds-arrow ds-arrow-down"></div></div>'),
+        G = $.find(".ds-bubble-content").delegate("a.ds-ctx-open", "click",
+        function(e) {
+            L("/api/posts/conversation", {
+                post_id: G.attr("data-post-id")
+            },
+            function(e) {
+                t.el.find("ol").html(i.map(e.response, J.ctxPost).join("\n"))
+            });
+            var t = j('<h2>\u67e5\u770b\u5bf9\u8bdd</h2><ol id="ds-ctx"></ol>');
+            return t.el.find(".ds-dialog").css("width", "600px"),
+            t.el.find(".ds-dialog-body").css({
+                "max-height": "350px",
+                _height: "350px",
+                "overflow-y": "auto",
+                "padding-top": "10px"
+            }),
+            !1
+        }),
+        Y = bubbleOutTimer = 0,
+        tt = function() {
+            bubbleOutTimer && (clearTimeout(bubbleOutTimer), bubbleOutTimer = 0)
+        };
+        bubbleOut = function() {
+            bubbleOutTimer = setTimeout(function() {
+                bubbleOutTimer = 0,
+                $.detach()
+            },
+            400)
+        },
+        $.mouseenter(tt).mouseleave(bubbleOut),
+        J.userInfo = function(e) {
+            var t = [];
+            return i.each(e.social_uid,
+            function(e, n) {
+                t.push('<a href="' + w.REMOTE + "/user-proxy/" + e + "/" + n + '/" target="_blank" class="ds-service-icon ds-' + e + '" title="' + w.sourceName[e] + '"></a>')
+            }),
+            '<a href="' + p(e.url) + '" class="ds-avatar" target="_blank">' + J.avatarImg(e) + '</a><a href="' + p(e.url) + '" class="ds-user-name ds-highlight" target="_blank">' + p(e.name) + "</a>" + t.join("") + '<p class="ds-user-card-meta"><a href="' + w.REMOTE + "/profile/" + e.user_id + '/" target="_blank"><span class="ds-highlight">' + e.comments + "</span>\u6761\u8bc4\u8bba</a></p>" + (e.description ? '<p class="ds-user-description">' + p(e.description) + "</p>": "")
+        },
+        P.PostList = function(e) {
+            e && (e.params && (this.params = e.params), e.embedThread && (this.embedThread = e.embedThread)),
+            this.el = i('<ul class="ds-comments"></ul>')
+        },
+        P.PostList.prototype = {
+            url: "/api/threads/listPosts",
+            render: function() {
+                return vt.call(this.el, this.embedThread, this.embedThread.options),
+                this
+            },
+            reset: function(e) {
+                var t = this.embedThread.options;
+                this.el.html(e[0] ? i.map(e,
+                function(e) {
+                    return ot[e] ? J.post(ot[e].data, t) : ""
+                }).join("") : J.postPlaceholder())
+            },
+            refetch: function() {
+                var e = this,
+                n = i(J.indicator()).appendTo(t.body).fadeIn(200);
+                e.el.fadeTo(200, .5),
+                L(e.url, e.params,
+                function(t) {
+                    at(ot, t.parentPosts || t.relatedPosts),
+                    at(ut, t.users),
+                    e.reset(t.response),
+                    e.embedThread.paginator.reset(t.cursor),
+                    e.el.fadeTo(200, 1),
+                    w.scrollTo(e.el),
+                    n.remove()
+                })
+            }
+        },
+        w.repostDialog = function(e, t, n, r) {
+            var i = j('<h2>\u8f6c\u53d1\u5230\u5fae\u535a</h2><div class="ds-quote"><strong>@' + p(K(e.data).name) + "</strong>: " + e.data.message + "</div>" + "<form>" + Q({
+                post_id: e.data.post_id
+            }) + '<div class="ds-textarea-wrapper">' + '<textarea name="message" title="Ctrl+Enter\u5feb\u6377\u63d0\u4ea4" placeholder="' + p(k.repost_reason) + '">' + p(t) + "</textarea>" + '<pre class="ds-hidden-text"></pre>' + "</div>" + '<div class="ds-actions">' + (r ? Q({
+                "service[]": r
+            }) : '<label><input type="checkbox" name="service[]" value="weibo"' + (rt.data.social_uid.weibo ? ' checked="checked"': "") + ' /><span class="ds-service-icon ds-weibo"></span>\u65b0\u6d6a\u5fae\u535a</label>  ' + '<label><input type="checkbox" name="service[]" value="qqt"' + (rt.data.social_uid.qq ? ' checked="checked"': "") + ' /><span class="ds-service-icon ds-qqt"></span>\u817e\u8baf\u5fae\u535a</label>') + '<button type="submit">' + k.repost + "</button>" + "</div>" + "</form>"),
+            s = i.el.find("form").submit(function(e) {
+                return ! r && !s.find("[type=checkbox]:checked")[0] ? (alert("\u8fd8\u6ca1\u6709\u9009\u53d1\u5e03\u5230\u54ea\u513f\u5462"), !1) : (A("/api/posts/repost", w.toJSON(s),
+                function(e) {
+                    if (n && r) {
+                        var t = n.options,
+                        i = dt(n.postList.el, e.response[r], t);
+                        t.order == "asc" == (t.formPosition == "top") && w.scrollTo(i);
+                        var s = n.el.find(".ds-comments-tab-" + r + " span.ds-highlight");
+                        s.html(parseInt(s.html()) + 1)
+                    }
+                }), i.close(), !1)
+            });
+            return s.find(".ds-actions [type=checkbox]").change(function(e) {
+                var t = this.value;
+                if (this.checked && !rt.data.social_uid[t == "qqt" ? "qq": t]) {
+                    mt(t);
+                    return
+                }
+            }),
+            B(s.find("textarea")).keyup(g).keyup(y).focus(),
+            !1
+        },
+        J.toolbar = function(e) {
+            var t = J.logoutUrl();
+            return '<div class="ds-toolbar"><div class="ds-account-control"><span class="ds-icon ds-icon-settings"></span> <span>\u5e10\u53f7\u7ba1\u7406</span><ul><li><a class="ds-bind-more" href="javascript:void(0);" style="border-top: none">\u7ed1\u5b9a\u66f4\u591a</a></li><li><a target="_blank" href="' + w.REMOTE + "/settings/" + W(X()) + '">' + p(k.settings) + "</a></li>" + '<li><a rel="nofollow" href="' + t + '" style="border-bottom: none">\u767b\u51fa</a></li>' + "</ul>" + "</div>" + '<div class="ds-visitor">' + (rt.data.url ? '<a class="ds-visitor-name" href="' + p(rt.data.url) + '" target="_blank">' + p(rt.data.name) + "</a>": '<span class="ds-visitor-name">' + p(rt.data.name) + "</span>") + '<a class="ds-unread-comments-count" href="javascript:void(0);" title="\u65b0\u56de\u590d"></a>' + "</div>" + "</div>"
+        },
+        H.EmbedThread = R.extend({
+            uri: "/api/threads/listPosts",
+            params: "thread-id local-thread-id source-thread-id thread-key category channel-key author-key author-id url limit order max-depth form-position container-url" + (f.match(/MSIE 6\.0/) ? "": " title image thumbnail"),
+            render: function() {
+                var e = this.el.attr("id", "ds-thread").append(J.waitingImg()),
+                t = e.width(),
+                n = e.data("url") || !e.attr("data-thread-id") && i("link[rel=canonical]").attr("href");
+                n ? e.data("url", d(n)) : e.data("container-url", r.href),
+                t && t <= 400 && e.addClass("ds-narrow").data("max-depth", 1)
+            },
+            updateCounter: function(e) {
+                var t = {
+                    duoshuo: ["comments", "\u8bc4\u8bba"],
+                    repost: ["reposts", "\u8f6c\u8f7d"],
+                    weibo: ["weibo_reposts", "\u65b0\u6d6a\u5fae\u535a"],
+                    qqt: ["qqt_reposts", "\u817e\u8baf\u5fae\u535a"]
+                };
+                for (var n in t) if (!e || e == n) {
+                    var r = this.data[t[n][0]];
+                    this.el.find(".ds-comments-tab-" + n).html(this.el.hasClass("ds-narrow") ? '<span class="ds-service-icon ds-' + n + '"></span>' + r: (r ? '<span class="ds-highlight">' + r + "</span>\u6761": "") + t[n][1])
+                }
+            },
+            onError: function(e) {
+                this.el.html("\u8bc4\u8bba\u6846\u51fa\u9519\u5566(" + e.code + "): " + e.errorMessage)
+            },
+            onload: function(t) {
+                var r = this,
+                s = r.threadId = t.thread.thread_id,
+                u = t.cursor,
+                a = r.options = t.options,
+                f = r.innerEl = _(i('<div id="ds-reset"></div>').appendTo(r.el));
+                r.data = t.thread,
+                at(ot, t.parentPosts || t.relatedPosts),
+                at(ut, t.users),
+                r.el.find("#ds-waiting").remove(),
+                a.like_thread_enabled && (r.meta = new H.Meta(r), r.meta.render().el.appendTo(f)),
+                a.hot_posts && t.hotPosts && t.hotPosts.length && (r.hotPosts = new H.HotPosts(i('<div class="ds-rounded"></div>'), {
+                    max_depth: 1,
+                    show_context: a.show_context
+                }), r.hotPosts.thread = r, r.hotPosts.el.appendTo(f), r.hotPosts.onload({
+                    response: t.hotPosts,
+                    options: {}
+                })),
+                r.postListHead = new H.PostListHead(r),
+                r.postList = new P.PostList({
+                    embedThread: r,
+                    params: {
+                        source: "duoshuo",
+                        thread_id: s,
+                        max_depth: a.max_depth,
+                        order: a.order,
+                        limit: a.limit
+                    }
+                }),
+                r.postList.render().reset(t.response),
+                r.paginator = new H.Paginator({
+                    collection: r.postList
+                }),
+                r.paginator.reset(u);
+                var l = r.replybox = new H.Replybox(r),
+                c = l.render().el.find("textarea");
+                l.postList = r.postList.el;
+                if (o) {
+                    var h = "ds_draft_" + s;
+                    c.bind("focus blur keyup",
+                    function(e) {
+                        var t = i(e.currentTarget).val();
+                        try {
+                            o[h] = t
+                        } catch(e) {}
+                    }),
+                    o[h] && c.val(o[h])
+                }
+                if (ct()) {
+                    var p = i(J.loginButtons()).delegate("a.ds-more-services", "click",
+                    function() {
+                        return p.find(".ds-additional-services").toggle(),
+                        !1
+                    });
+                    M(p)
+                } else r.toolbar = i(J.toolbar()).delegate(".ds-account-control", "mouseenter",
+                function() {
+                    i(this).addClass("ds-active")
+                }).delegate(".ds-account-control", "mouseleave",
+                function() {
+                    i(this).removeClass("ds-active")
+                }).delegate("a.ds-bind-more", "click",
+                function() {
+                    var e = j("<h2>\u7ed1\u5b9a\u66f4\u591a\u5e10\u53f7</h2>" + J.serviceList(1) + J.additionalServices(1) + '<div style="clear:both"></div>').el.find(".ds-dialog").addClass("ds-dialog-bind-more").css("width", "300px");
+                    return M(e),
+                    !1
+                }).delegate("a.ds-unread-comments-count", "click",
+                function(e) {
+                    return U("unread-comments"),
+                    !1
+                });
+                r.postListHead.render().el.appendTo(f)[a.formPosition == "top" ? "before": "after"]('<a name="respond"></a>', r.toolbar || p, l.el).after(r.postList.el, r.paginator.el),
+                r.updateCounter(),
+                t.alerts && i.each(t.alerts,
+                function(e, t) {
+                    i('<div class="ds-alert">' + t + "</div>").insertBefore(r.toolbar || p)
+                }),
+                a.message && c.val(a.message).focus(),
+                i(J.poweredBy(a.poweredby_text)).appendTo(f),
+                it.on("reset",
+                function() {
+                    var e = it.data.comments || 0;
+                    f.find("a.ds-unread-comments-count").html(e).attr("title", e ? "\u4f60\u6709" + e + "\u6761\u65b0\u56de\u590d": "\u4f60\u6ca1\u6709\u65b0\u56de\u590d").css("display", e ? "inline": "none")
+                }),
+                a.mzadx_id && (w.require("mzadxN",
+                function() {}), i('<div id="MZADX_' + a.mzadx_id + '" style="margin:0 auto;"></div>').appendTo(f), __mz_rpq = e.__mz_rpq || [], __mz_rpq.push({
+                    l: [a.mzadx_id],
+                    r: "1",
+                    _srv: "MZADX",
+                    _callback: function(e, t) {}
+                })),
+                w.thread = r,
+                it.data !== n && it.trigger("reset"),
+                ct() || D({
+                    visit_thread_id: r.threadId
+                })
+            },
+            onMessage: function(e) {
+                dt(this.postList.el, e, this.options)
+            }
+        }),
+        J.hotPosts = function(e, t) {
+            return '<div class="ds-header ds-gradient-bg">' + k.hot_posts_title + "</div><ul>" + i.map(e,
+            function(e) {
+                return ot[e] ? J.post(ot[e].data, t) : ""
+            }).join("") + "</ul>"
+        },
+        H.HotPosts = R.extend({
+            params: "show-quote",
+            tmpl: "hotPosts",
+            render: function() {
+                return this.el.attr("id", "ds-hot-posts"),
+                this
+            },
+            onload: function(e) {
+                R.prototype.onload.call(this, e),
+                vt.call(this.el.find("ul"), this.thread, this.options)
+            }
+        }),
+        J.commentList = function(e, t) {
+            return i.map(e,
+            function(e) {
+                var n = K(e);
+                return '<li class="ds-comment' + (t.show_avatars ? " ds-show-avatars": "") + '" data-post-id="' + e.post_id + '">' + (t.show_avatars ? '<div class="ds-avatar">' + J.avatar(n, t.avatar_size) + "</div>": "") + '<div class="ds-meta">' + J.userAnchor(n) + (t.show_time ? J.timeHtml(e.created_at) : "") + "</div>" + (t.show_title ? '<div class="ds-thread-title">\u5728 <a href="' + p(e.thread.url + "#comments") + '">' + p(e.thread.title) + '</a> \u4e2d\u8bc4\u8bba</div><div class="ds-excerpt">' + e.message + "</div>": '<a class="ds-excerpt" title="' + p(e.thread.title) + ' \u4e2d\u7684\u8bc4\u8bba" href="' + p(e.thread.url + "#comments") + '">' + e.message + "</a>") + "</li>"
+            }).join("")
+        },
+        H.RecentComments = R.extend({
+            uri: "/api/sites/listRecentPosts",
+            params: "show-avatars show-time show-title avatar-size show-admin excerpt-length num-items channel-key",
+            tmpl: "commentList",
+            render: function() {
+                this.el.attr("id", "ds-recent-comments")
+            }
+        }),
+        J.recentVisitors = function(e, t) {
+            return i.map(e,
+            function(e) {
+                return '<div class="ds-avatar">' + J.avatar(e, t.avatar_size) + "</div>"
+            }).join("")
+        },
+        H.RecentVisitors = R.extend({
+            uri: "/api/sites/listVisitors",
+            params: "show-time avatar-size num-items channel-key",
+            tmpl: "recentVisitors",
+            render: function() {
+                this.el.children().detach(),
+                this.el.attr("id", "ds-recent-visitors").append(this.waitingEl = i(J.waitingImg()))
+            }
+        }),
+        J.topUsers = function(e, t) {
+            return i.map(e,
+            function(e) {
+                return '<div class="ds-avatar">' + J.avatar(e, t.avatar_size) + "<h4>" + e.name + "</h4>" + "</div>"
+            }).join("")
+        },
+        H.TopUsers = R.extend({
+            uri: "/api/sites/listTopUsers",
+            params: "show-time avatar-size num-items channel-key",
+            tmpl: "topUsers",
+            render: function() {
+                this.el.children().detach(),
+                this.el.attr("id", "ds-top-users").append(this.waitingEl = i(J.waitingImg()))
+            }
+        }),
+        J.topThreads = function(e, t) {
+            return i.map(e,
+            function(e) {
+                return '<li><a target="_blank" href="' + p(e.url) + '" title="' + e.title + '">' + e.title + "</a>" + "</li>"
+            }).join("")
+        },
+        H.TopThreads = R.extend({
+            uri: "/api/sites/listTopThreads",
+            params: "range num-items channel-key",
+            tmpl: "topThreads",
+            render: function() {
+                this.el.children().detach(),
+                this.el.attr("id", "ds-top-threads").append(this.waitingEl = i(J.waitingImg()))
+            }
+        }),
+        J.loginWidget = function() {
+            var e = '<div class="ds-icons-32">';
+            return i.each(["weibo", "qq", "renren", "kaixin", "douban", "netease", "sohu"],
+            function(t, n) {
+                e += '<a class="ds-' + n + '" href="' + J.loginUrl(n) + '">' + w.sourceName[n] + "</a>"
+            }),
+            e + "</div>"
+        },
+        H.LoginWidget = R.extend({
+            tmpl: "loginWidget",
+            render: function() {
+                var e = this.el;
+                e.attr("id", "ds-login").html(J.loginWidget()),
+                M(e, "a"),
+                e.find("a.ds-logout").attr("href", J.logoutUrl())
+            }
+        }),
+        H.ThreadCount = R.extend({
+            onload: function(e) {
+                var t = this.el,
+                n = t.data("count-type") || "comments",
+                r = e.data[n];
+                t[t.data("replace") ? "replaceWith": "html"](k[n + "_" + (r ? r > 1 ? "multiple": "one": "zero")].replace("{num}", r))
+            }
+        });
+        var yt = 0;
+        w.initSelector = function(e, t) {
+            var n = [];
+            V() && (i.isReady || !E) && i(e).each(function(e, r) {
+                var s = i(r);
+                if (s.data("initialized")) return;
+                s.data("initialized", !0);
+                var o = new H[t.type](s, t);
+                C.push(o);
+                if (t.type === "ThreadCount") {
+                    var u = s.attr("data-thread-key");
+                    s.attr("data-channel-key") && (u = s.attr("data-channel-key") + ":" + u),
+                    n.push(u),
+                    st[u] || (st[u] = new et({})),
+                    st[u].on("reset",
+                    function() {
+                        o.onload(this)
+                    })
+                } else if (o.uri) {
+                    var a = {};
+                    i.each(o.params.split(" "),
+                    function(e, t) {
+                        a[t.replace(/-/g, "_")] = s.attr("data-" + t) || s.data(t)
+                    }),
+                    L(o.uri, bt(a),
+                    function(e) {
+                        o.load(e)
+                    })
+                }
+            }),
+            n.length && L("/api/threads/counts", bt({
+                threads: n.join(",")
+            }),
+            function(e) {
+                l(e),
+                ft(k, e.options),
+                at(st, e.response)
+            })
+        },
+        (w.initView = function() {
+            i.each(N, w.initSelector)
+        })(),
+        i(function() {
+            if (!V()) return I("\u7f3a\u5c11duoshuoQuery\u7684\u5b9a\u4e49");
+            setInterval(function() {
+                i(".ds-time").each(function() {
+                    var e = i(this).attr("datetime");
+                    e && (this.innerHTML = w.elapsedTime(e))
+                })
+            },
+            2e4),
+            z.ondomready && z.ondomready(),
+            w.initView(),
+            !yt && z.short_name && L("/api/analytics/ping", bt({}), l)
+        })
+    })
+})(window, document);
