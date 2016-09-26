@@ -15,15 +15,25 @@
 
 
 
-<meta name="description" content="一名来自中国的iOS开发者。正在潜心修炼。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="xkCodeartisan">
-<meta property="og:url" content="http://yoursite.com/archives/2015/08/index.html">
+<meta name="description" content="//字符串是否为空  
+#define kStringIsEmpty(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] &amp;lt; 1 ? YES : NO )
+//数组是否为空  
+#define kArrayIsEmpty(array) (array == nil || [array isKindOfC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS常用宏">
+<meta property="og:url" content="http://yoursite.com/2015/09/04/three/index.html">
 <meta property="og:site_name" content="xkCodeartisan">
-<meta property="og:description" content="一名来自中国的iOS开发者。正在潜心修炼。">
+<meta property="og:description" content="//字符串是否为空  
+#define kStringIsEmpty(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] &amp;lt; 1 ? YES : NO )
+//数组是否为空  
+#define kArrayIsEmpty(array) (array == nil || [array isKindOfC">
+<meta property="og:updated_time" content="2016-09-26T02:34:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xkCodeartisan">
-<meta name="twitter:description" content="一名来自中国的iOS开发者。正在潜心修炼。">
+<meta name="twitter:title" content="iOS常用宏">
+<meta name="twitter:description" content="//字符串是否为空  
+#define kStringIsEmpty(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] &amp;lt; 1 ? YES : NO )
+//数组是否为空  
+#define kArrayIsEmpty(array) (array == nil || [array isKindOfC">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +65,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2015/8 | xkCodeartisan</title>
+<title>iOS常用宏 | xkCodeartisan</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -65,8 +75,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -239,122 +249,200 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-three" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2015/09/04/three/" class="article-date">
+      <time datetime="2015-09-04T02:25:08.000Z" itemprop="datePublished">2015-09-04</time>
+</a>
+
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS常用宏
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2015/08/30/two/" class="archive-article-date">
-      <time datetime="2015-08-30T13:17:15.000Z" itemprop="datePublished">08-30</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/30/two/">通过模态弹出视图的一些问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+        <hr>
+<pre><code>//字符串是否为空  
+#define kStringIsEmpty(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] &lt; 1 ? YES : NO )
+//数组是否为空  
+#define kArrayIsEmpty(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0)
+//字典是否为空  
+#define kDictIsEmpty(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0)
+//是否是空对象  
+#define kObjectIsEmpty(_object) (_object == nil \|| [_object isKindOfClass:[NSNull class]] \|| ([_object respondsToSelector:@selector(length)] &amp;&amp; [(NSData *)_object length] == 0) \|| ([_object respondsToSelector:@selector(count)] &amp;&amp; [(NSArray *)_object count] == 0))
+//获取屏幕宽度与高度  
+#define kScreenWidth \([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)] ? [UIScreen mainScreen].nativeBounds.size.width/[UIScreen mainScreen].nativeScale : [UIScreen mainScreen].bounds.size.width)
+#define kScreenHeight \([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)] ? [UIScreen mainScreen].nativeBounds.size.height/[UIScreen mainScreen].nativeScale : [UIScreen mainScreen].bounds.size.height)
+#define kScreenSize \([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)] ? CGSizeMake([UIScreen mainScreen].nativeBounds.size.width/[UIScreen mainScreen].nativeScale,[UIScreen mainScreen].nativeBounds.size.height/[UIScreen mainScreen].nativeScale) : [UIScreen mainScreen].bounds.size)
+//一些缩写
+#define kApplication [UIApplication sharedApplication]
+#define kKeyWindow [UIApplication sharedApplication].keyWindow
+#define kAppDelegate [UIApplication sharedApplication].delegate
+#define kUserDefaults [NSUserDefaults standardUserDefaults]
+#define kNotificationCenter [NSNotificationCenter defaultCenter]
+//APP版本号
+#define kAppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@&quot;CFBundleShortVersionString&quot;]
+//系统版本号
+#define kSystemVersion [[UIDevice currentDevice] systemVersion]
+//获取当前语言
+#define kCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
+//判断是否为iPhone
+#define kISiPhone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+//判断是否为iPad
+#define kISiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+//获取沙盒Document路径
+#define kDocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+//获取沙盒temp路径
+#define kTempPath NSTemporaryDirectory()
+//获取沙盒Cache路径
+#define kCachePath [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
+//判断是真机还是模拟器
+#if TARGET_OS_IPHONE
+//真机
+#endif
+#if TARGET_IPHONE_SIMULATOR
+//模拟器
+#endif
+//开发的时候打印，但是发布的时候不打印的NSLog
+#ifdef DEBUG
+#define NSLog(...) NSLog(@&quot;%s 第%d行 \n %@\n\n&quot;,__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#else
+#define NSLog(...)
+#endif
+//颜色
+#define kRGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define kRGBAColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(r)/255.0 blue:(r)/255.0 alpha:a]
+#define kRandomColor KRGBColor(arc4random_uniform(256)/255.0,arc4random_uniform(256)/255.0,arc4random_uniform(256)/255.0)
+#define kColorWithHex(rgbValue) \[UIColor colorWithRed:((float)((rgbValue &amp; 0xFF0000) &gt;&gt; 16)) / 255.0 \green:((float)((rgbValue &amp; 0xFF00) &gt;&gt; 8)) / 255.0 \blue:((float)(rgbValue &amp; 0xFF)) / 255.0 alpha:1.0]
+//弱引用/强引用
+#define kWeakSelf(type) __weak typeof(type) weak##type = type;
+#define kStrongSelf(type) __strong typeof(type) type = weak##type;
+//由角度转换弧度
+#define kDegreesToRadian(x) (M_PI * (x) / 180.0)
+//由弧度转换角度
+#define kRadianToDegrees(radian) (radian * 180.0) / (M_PI)
+//获取一段时间间隔
+#define kStartTime CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
+#define kEndTime NSLog(@&quot;Time: %f&quot;, CFAbsoluteTimeGetCurrent() - start)
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/09/04/three/">iOS常用宏</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Kyle</a></p>
+        <p><span>发布时间:</span>2015-09-04, 10:25:08</p>
+        <p><span>最后更新:</span>2016-09-26, 10:34:02</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/09/04/three/" title="iOS常用宏">http://yoursite.com/2015/09/04/three/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2015/09/04/three/　　作者: Kyle" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/09/18/four/">
+                    使用Appirater为APP添加评分功能
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/08/30/two/">
+                    通过模态弹出视图的一些问题
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
+
+
+
+
+
     
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2114842';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2015/08/22/one/" class="archive-article-date">
-      <time datetime="2015-08-22T12:10:15.000Z" itemprop="datePublished">08-22</time>
-</a>
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
+    
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/22/one/">loadView、viewDidLoad及viewDidUnload的关系</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/09/18/four/" title="上一篇: 使用Appirater为APP添加评分功能">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/08/30/two/" title="下一篇: 通过模态弹出视图的一些问题">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2015/08/15/record/" class="archive-article-date">
-      <time datetime="2015-08-15T02:46:46.000Z" itemprop="datePublished">08-15</time>
-</a>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2015/11/20/six/">Runtime(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/06/five/">常用的正则表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/18/four/">使用Appirater为APP添加评分功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/04/three/">iOS常用宏</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/30/two/">通过模态弹出视图的一些问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/22/one/">loadView、viewDidLoad及viewDidUnload的关系</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/15/record/">苹果API常用的英文名词</a></li></ul>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/15/record/">苹果API常用的英文名词</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">

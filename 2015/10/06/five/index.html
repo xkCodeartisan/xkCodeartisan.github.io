@@ -15,15 +15,34 @@
 
 
 
-<meta name="description" content="一名来自中国的iOS开发者。正在潜心修炼。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="xkCodeartisan">
-<meta property="og:url" content="http://yoursite.com/archives/2015/08/index.html">
+<meta name="description" content="1.校验密码强度密码的强度必须是包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间。  
+^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$  
+2.校验中文字符串仅能是中文。 
+^[\\u4e00-\\u9fa5]{0,}$
+3.由数字、26个英文字母或下划线组成的字符串 
+^\\w+$
+4.校验E-Mail 地址同密码一样，下面是E-mail地址合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用的正则表达式">
+<meta property="og:url" content="http://yoursite.com/2015/10/06/five/index.html">
 <meta property="og:site_name" content="xkCodeartisan">
-<meta property="og:description" content="一名来自中国的iOS开发者。正在潜心修炼。">
+<meta property="og:description" content="1.校验密码强度密码的强度必须是包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间。  
+^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$  
+2.校验中文字符串仅能是中文。 
+^[\\u4e00-\\u9fa5]{0,}$
+3.由数字、26个英文字母或下划线组成的字符串 
+^\\w+$
+4.校验E-Mail 地址同密码一样，下面是E-mail地址合">
+<meta property="og:updated_time" content="2016-09-26T03:04:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xkCodeartisan">
-<meta name="twitter:description" content="一名来自中国的iOS开发者。正在潜心修炼。">
+<meta name="twitter:title" content="常用的正则表达式">
+<meta name="twitter:description" content="1.校验密码强度密码的强度必须是包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间。  
+^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$  
+2.校验中文字符串仅能是中文。 
+^[\\u4e00-\\u9fa5]{0,}$
+3.由数字、26个英文字母或下划线组成的字符串 
+^\\w+$
+4.校验E-Mail 地址同密码一样，下面是E-mail地址合">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +74,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2015/8 | xkCodeartisan</title>
+<title>常用的正则表达式 | xkCodeartisan</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -65,8 +84,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -239,122 +258,172 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-five" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2015/10/06/five/" class="article-date">
+      <time datetime="2015-10-06T13:00:00.000Z" itemprop="datePublished">2015-10-06</time>
+</a>
+
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      常用的正则表达式
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2015/08/30/two/" class="archive-article-date">
-      <time datetime="2015-08-30T13:17:15.000Z" itemprop="datePublished">08-30</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/30/two/">通过模态弹出视图的一些问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+        <hr>
+<p>1.校验密码强度密码的强度必须是包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间。  </p>
+<pre><code>^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$  
+</code></pre><p>2.校验中文<br>字符串仅能是中文。 </p>
+<pre><code>^[\\u4e00-\\u9fa5]{0,}$
+</code></pre><p>3.由数字、26个英文字母或下划线组成的字符串 </p>
+<pre><code>^\\w+$
+</code></pre><p>4.校验E-Mail 地址<br>同密码一样，下面是E-mail地址合规性的正则检查语句。</p>
+<pre><code>[\\w!#$%&amp;&apos;*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&amp;&apos;*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?
+</code></pre><p>5.校验身份证号码<br>下面是身份证号码的正则校验。15 或 18位。</p>
+<p>15位：</p>
+<pre><code>^[1-9]\\d{7}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}$
+</code></pre><p>18位：</p>
+<pre><code>^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)$
+</code></pre><p>6.校验日期<br>“yyyy-mm-dd“ 格式的日期校验，已考虑平闰年。</p>
+<pre><code>^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$
+</code></pre><p>7.校验金额<br>金额校验，精确到2位小数。</p>
+<pre><code>^[0-9]+(.[0-9]{2})?$  
+</code></pre><p>8.校验手机号<br>下面是国内 13、15、18开头的手机号正则表达式。（可根据目前国内收集号扩展前两位开头号码）</p>
+<pre><code>^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$
+</code></pre><p>9.判断IE的版本<br>IE目前还没被完全取代，很多页面还是需要做版本兼容，下面是IE版本检查的表达式。</p>
+<pre><code>^.*MSIE [5-8](?:\\.[0-9]+)?(?!.*Trident\\/[5-9]\\.0).*$
+</code></pre><p>10.检查URL的前缀<br>应用开发中很多时候需要区分请求是HTTPS还是HTTP，通过下面的表达式可以取出一个url的前缀然后再逻辑判断。</p>
+<pre><code>if (!s.match(/^[a-zA-Z]+:\\/\\//))
+{
+s = &apos;http://&apos; + s;
+}
+</code></pre><p>11.提取URL链接<br>下面的这个表达式可以筛选出一段文本中的URL。</p>
+<pre><code>^(f|ht){1}(tp|tps):\\/\\/([\\w-]+\\.)+[\\w-]+(\\/[\\w- ./?%&amp;=]*)?
+</code></pre><p>12.提取Color Hex Codes<br>有时需要抽取网页中的颜色代码，可以使用下面的表达式。</p>
+<pre><code>^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$
+</code></pre><p>13.提取网页图片<br>假若你想提取网页中所有图片信息，可以利用下面的表达式。</p>
+<pre><code>\\&lt; *[img][^\\\\&gt;]*[src] *= *[\\&quot;\\&apos;]{0,1}([^\\&quot;\\&apos;\\ &gt;]*)
+</code></pre><p>14.提取页面超链接<br>提取html中的超链接。</p>
+<pre><code>(&lt;a\\s*(?!.*\\brel=)[^&gt;]*)(href=&quot;https?:\\/\\/)((?!(?:(?:www\\.)?&apos;.implode(&apos;|(?:www\\.)?&apos;, $follow_list).&apos;))[^&quot;]+)&quot;((?!.*\\brel=)[^&gt;]*)(?:[^&gt;]*)&gt;
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/10/06/five/">常用的正则表达式</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Kyle</a></p>
+        <p><span>发布时间:</span>2015-10-06, 21:00:00</p>
+        <p><span>最后更新:</span>2016-09-26, 11:04:53</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/10/06/five/" title="常用的正则表达式">http://yoursite.com/2015/10/06/five/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2015/10/06/five/　　作者: Kyle" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/11/20/six/">
+                    Runtime(一)
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/09/18/four/">
+                    使用Appirater为APP添加评分功能
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
+
+
+
+
+
     
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2114842';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2015/08/22/one/" class="archive-article-date">
-      <time datetime="2015-08-22T12:10:15.000Z" itemprop="datePublished">08-22</time>
-</a>
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
+    
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/22/one/">loadView、viewDidLoad及viewDidUnload的关系</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/11/20/six/" title="上一篇: Runtime(一)">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/09/18/four/" title="下一篇: 使用Appirater为APP添加评分功能">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2015/08/15/record/" class="archive-article-date">
-      <time datetime="2015-08-15T02:46:46.000Z" itemprop="datePublished">08-15</time>
-</a>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2015/11/20/six/">Runtime(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/06/five/">常用的正则表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/18/four/">使用Appirater为APP添加评分功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/04/three/">iOS常用宏</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/30/two/">通过模态弹出视图的一些问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/22/one/">loadView、viewDidLoad及viewDidUnload的关系</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/15/record/">苹果API常用的英文名词</a></li></ul>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/15/record/">苹果API常用的英文名词</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">

@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hans">
 <head>
-  <meta charset="utf-8">
-  
-  <title>xkCodeartisan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一名来自中国的iOS开发者。正在潜心修炼。">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Kyle" />
+
+
+    
+    
+
+
+<meta name="description" content="一名来自中国的iOS开发者。正在潜心修炼。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="xkCodeartisan">
 <meta property="og:url" content="http://yoursite.com/index.html">
@@ -14,40 +27,71 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xkCodeartisan">
 <meta name="twitter:description" content="一名来自中国的iOS开发者。正在潜心修炼。">
-  
-    <link rel="alternative" href="/atom.xml" title="xkCodeartisan" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/img/favicon.png">
-  
-  
-  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
-    
-    
-  
-  
-      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  
-  <!-- 加载特效 -->
-    <script src="/js/pace.js"></script>
-    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
-  <script>
-      var yiliaConfig = {
-          fancybox: true,
-          animate: true,
-          isHome: true,
-          isPost: false,
-          isArchive: false,
-          isTag: false,
-          isCategory: false,
-          open_in_new: false
-      }
-  </script>
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="xkCodeartisan" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <style> .article { opacity: 0;} </style>
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>xkCodeartisan</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: true,
+        isPost: false,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
 </head>
 <body>
   <div id="container">
@@ -56,11 +100,8 @@
 <div class="intrude-less">
     <header id="header" class="inner">
         <a href="/" class="profilepic">
-            
-            <img lazy-src="/img/head.jpg" class="js-avatar">
-            
+            <img src="/img/avatar.png" class="animated zoomIn">
         </a>
-
         <hgroup>
           <h1 class="header-author"><a href="/">Kyle</a></h1>
         </hgroup>
@@ -68,7 +109,10 @@
         
         <p class="header-subtitle">iOS开发</p>
         
+
         
+
+
         
             <div id="switch-btn" class="switch-btn">
                 <div class="icon">
@@ -79,6 +123,11 @@
                         </div>
                         <div class="icon-wrap icon-ribbon hide" data-idx="1">
                             <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
                         </div>
                         
                         
@@ -96,6 +145,8 @@
                         <li>菜单</li>
                         <li>标签</li>
                         
+                        <li>友情链接</li>
+                        
                         
                         <li>关于我</li>
                         
@@ -110,10 +161,16 @@
                     <nav class="header-menu">
                         <ul>
                         
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
                         </ul>
                     </nav>
                     <nav class="header-nav">
                         <ul class="social">
+                            
+                                <a class="fa Email" href="/“85695157@qq.com”" title="Email"></a>
                             
                         </ul>
                     </nav>
@@ -122,16 +179,24 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/开始/" style="font-size: 10px;">开始</a>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
                     </div>
                 </section>
                 
                 
                 
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="/">简书</a>
+                    
+                    </div>
+                </section>
+                
 
                 
                 
-                <section class="switch-part switch-part3">
+                <section class="switch-part switch-part4">
                 
                     <div id="js-aboutme">热爱开发、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
                 </section>
@@ -150,9 +215,7 @@
     <div class="intrude-less">
         <header id="header" class="inner">
             <a href="/" class="profilepic">
-                
-                    <img lazy-src="/img/head.jpg" class="js-avatar">
-                
+                <img src="/img/avatar.png" class="animated zoomIn">
             </a>
             <hgroup>
               <h1 class="header-author"><a href="/" title="回到主页">Kyle</a></h1>
@@ -163,25 +226,34 @@
             <nav class="header-menu">
                 <ul>
                 
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
                 <div class="clearfix"></div>
                 </ul>
             </nav>
             <nav class="header-nav">
-                <div class="social">
-                    
-                </div>
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/“85695157@qq.com”" title="Email"></a>
+                            
+                        </ul>
             </nav>
         </header>                
     </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
   
-    <article id="post-swiftone" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-six" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/13/swiftone/" class="article-date">
-      <time datetime="2015-08-13T02:46:46.000Z" itemprop="datePublished">2015-08-13</time>
+      <a href="/2015/11/20/six/" class="article-date">
+      <time datetime="2015-11-20T00:17:15.000Z" itemprop="datePublished">2015-11-20</time>
 </a>
+
+
     </div>
   
   <div class="article-inner">
@@ -193,7 +265,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/13/swiftone/">新的开始</a>
+      <a class="article-title" href="/2015/11/20/six/">Runtime(一)</a>
     </h1>
   
 
@@ -203,7 +275,580 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>欢迎来到<a href="https://xkCodeartisan.github.io" target="_blank" rel="external">xkCodeartisan</a>!一名iOS开发者。现在就职于北京某公司，在以后的开发中希望大家能一起交流。</p>
+        <hr>
+<p>一、runtime简介<br>RunTime简称运行时。OC就是运行时机制，也就是在运行时候的一些机制，其中最主要的是消息机制。<br>对于C语言，函数的调用在编译的时候会决定调用哪个函数。<br>对于OC的函数，属于动态调用过程，在编译的时候并不能决定真正调用哪个函数，只有在真正运行的时候才会根据函数的名称找到对应的函数来调用。<br>在编译阶段，OC可以调用任何函数，即使这个函数并未实现，只要声明过就不会报错。<br>在编译阶段，C语言调用未实现的函数就会报错。<br>二、runtime作用<br>1.发送消息<br>方法调用的本质，就是让对象发送消息。<br>objc_msgSend,只有对象才能发送消息，因此以objc开头.<br>使用消息机制前提，必须导入#import <objc message.h=""><br>消息机制简单使用  </objc></p>
+<pre><code>// 创建person对象
+Person *p = [[Person alloc] init];
+
+// 调用对象方法
+[p eat];
+
+// 本质：让对象发送消息
+objc_msgSend(p, @selector(eat));
+
+// 调用类方法的方式：两种
+// 第一种通过类名调用
+[Person eat];
+// 第二种通过类对象调用
+[[Person class] eat];
+
+// 用类名调用类方法，底层会自动把类名转换成类对象调用
+// 本质：让类对象发送消息
+objc_msgSend([Person class], @selector(eat));
+</code></pre><p>2.交换方法<br>开发使用场景:系统自带的方法功能不够，给系统自带的方法扩展一些功能，并且保持原有的功能。<br>方式一:继承系统的类，重写方法.<br>方式二:使用runtime,交换方法.  </p>
+<pre><code>@implementation ViewController
+- (void)viewDidLoad {
+[super viewDidLoad];
+// Do any additional setup after loading the view, typically from a nib.
+// 需求：给imageNamed方法提供功能，每次加载图片就判断下图片是否加载成功。
+// 步骤一：先搞个分类，定义一个能加载图片并且能打印的方法+(instancetype)imageWithName:(NSString *)name;
+// 步骤二：交换imageNamed和imageWithName的实现，就能调用imageWithName，间接调用imageWithName的实现。
+UIImage *image = [UIImage imageNamed:@&quot;123&quot;];
+}
+@end
+
+
+@implementation UIImage (Image)
+// 加载分类到内存的时候调用
++ (void)load
+{
+// 交换方法
+
+// 获取imageWithName方法地址
+Method imageWithName = class_getClassMethod(self, @selector(imageWithName:));
+
+// 获取imageWithName方法地址
+Method imageName = class_getClassMethod(self, @selector(imageNamed:));
+
+// 交换方法地址，相当于交换实现方式
+method_exchangeImplementations(imageWithName, imageName);
+}
+
+// 不能在分类中重写系统方法imageNamed，因为会把系统的功能给覆盖掉，而且分类中不能调用super.
+
+// 既能加载图片又能打印
++ (instancetype)imageWithName:(NSString *)name
+{
+
+// 这里调用imageWithName，相当于调用imageName
+UIImage *image = [self imageWithName:name];
+
+if (image == nil) {
+NSLog(@&quot;加载空的图片&quot;);
+}
+
+return image;
+}
+@end
+</code></pre><p>3.动态添加方法<br>开发使用场景：如果一个类方法非常多，加载类到内存的时候也比较耗费资源，需要给每个方法生成映射表，可以使用动态给某个类，添加方法解决。<br>简单使用</p>
+<pre><code>@implementation ViewController
+
+- (void)viewDidLoad {
+[super viewDidLoad];
+// Do any additional setup after loading the view, typically from a nib.
+
+Person *p = [[Person alloc] init];
+
+// 默认person，没有实现eat方法，可以通过performSelector调用，但是会报错。
+// 动态添加方法就不会报错
+[p performSelector:@selector(eat)];
+
+}
+
+
+@end
+
+
+@implementation Person
+// void(*)()
+// 默认方法都有两个隐式参数，
+void eat(id self,SEL sel)
+{
+NSLog(@&quot;%@ %@&quot;,self,NSStringFromSelector(sel));
+}
+
+// 当一个对象调用未实现的方法，会调用这个方法处理,并且会把对应的方法列表传过来.
+// 刚好可以用来判断，未实现的方法是不是我们想要动态添加的方法
++ (BOOL)resolveInstanceMethod:(SEL)sel
+{
+
+if (sel == @selector(eat)) {
+// 动态添加eat方法
+
+// 第一个参数：给哪个类添加方法
+// 第二个参数：添加方法的方法编号
+// 第三个参数：添加方法的函数实现（函数地址）
+// 第四个参数：函数的类型，(返回值+参数类型) v:void @:对象-&gt;self :表示SEL-&gt;_cmd
+class_addMethod(self, @selector(eat), eat, &quot;v@:&quot;);
+
+}
+
+return [super resolveInstanceMethod:sel];
+}
+@end
+</code></pre><p>4.给分类添加属性<br>原理：给一个类声明属性，其实本质就是给这个类添加关联，并不是直接把这个值的内存空间添加到类存空间。</p>
+<pre><code>@implementation ViewController
+
+- (void)viewDidLoad {
+[super viewDidLoad];
+// Do any additional setup after loading the view, typically from a nib.
+
+// 给系统NSObject类动态添加属性name
+
+NSObject *objc = [[NSObject alloc] init];
+objc.name = @&quot;xxx&quot;;
+NSLog(@&quot;%@&quot;,objc.name);
+
+}
+
+@end
+
+// 定义关联的key
+static const char *key = &quot;name&quot;;
+
+@implementation NSObject (Property)
+
+- (NSString *)name
+{
+// 根据关联的key，获取关联的值。
+return objc_getAssociatedObject(self, key);
+}
+
+- (void)setName:(NSString *)name
+{
+// 第一个参数：给哪个对象添加关联
+// 第二个参数：关联的key，通过这个key获取
+// 第三个参数：关联的value
+// 第四个参数:关联的策略
+objc_setAssociatedObject(self, key, name, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+@end
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-five" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/06/five/" class="article-date">
+      <time datetime="2015-10-06T13:00:00.000Z" itemprop="datePublished">2015-10-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/06/five/">常用的正则表达式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <hr>
+<p>1.校验密码强度密码的强度必须是包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间。  </p>
+<pre><code>^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$  
+</code></pre><p>2.校验中文<br>字符串仅能是中文。 </p>
+<pre><code>^[\\u4e00-\\u9fa5]{0,}$
+</code></pre><p>3.由数字、26个英文字母或下划线组成的字符串 </p>
+<pre><code>^\\w+$
+</code></pre><p>4.校验E-Mail 地址<br>同密码一样，下面是E-mail地址合规性的正则检查语句。</p>
+<pre><code>[\\w!#$%&amp;&apos;*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&amp;&apos;*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?
+</code></pre><p>5.校验身份证号码<br>下面是身份证号码的正则校验。15 或 18位。</p>
+<p>15位：</p>
+<pre><code>^[1-9]\\d{7}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}$
+</code></pre><p>18位：</p>
+<pre><code>^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)$
+</code></pre><p>6.校验日期<br>“yyyy-mm-dd“ 格式的日期校验，已考虑平闰年。</p>
+<pre><code>^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$
+</code></pre><p>7.校验金额<br>金额校验，精确到2位小数。</p>
+<pre><code>^[0-9]+(.[0-9]{2})?$  
+</code></pre><p>8.校验手机号<br>下面是国内 13、15、18开头的手机号正则表达式。（可根据目前国内收集号扩展前两位开头号码）</p>
+<pre><code>^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$
+</code></pre><p>9.判断IE的版本<br>IE目前还没被完全取代，很多页面还是需要做版本兼容，下面是IE版本检查的表达式。</p>
+<pre><code>^.*MSIE [5-8](?:\\.[0-9]+)?(?!.*Trident\\/[5-9]\\.0).*$
+</code></pre><p>10.检查URL的前缀<br>应用开发中很多时候需要区分请求是HTTPS还是HTTP，通过下面的表达式可以取出一个url的前缀然后再逻辑判断。</p>
+<pre><code>if (!s.match(/^[a-zA-Z]+:\\/\\//))
+{
+s = &apos;http://&apos; + s;
+}
+</code></pre><p>11.提取URL链接<br>下面的这个表达式可以筛选出一段文本中的URL。</p>
+<pre><code>^(f|ht){1}(tp|tps):\\/\\/([\\w-]+\\.)+[\\w-]+(\\/[\\w- ./?%&amp;=]*)?
+</code></pre><p>12.提取Color Hex Codes<br>有时需要抽取网页中的颜色代码，可以使用下面的表达式。</p>
+<pre><code>^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$
+</code></pre><p>13.提取网页图片<br>假若你想提取网页中所有图片信息，可以利用下面的表达式。</p>
+<pre><code>\\&lt; *[img][^\\\\&gt;]*[src] *= *[\\&quot;\\&apos;]{0,1}([^\\&quot;\\&apos;\\ &gt;]*)
+</code></pre><p>14.提取页面超链接<br>提取html中的超链接。</p>
+<pre><code>(&lt;a\\s*(?!.*\\brel=)[^&gt;]*)(href=&quot;https?:\\/\\/)((?!(?:(?:www\\.)?&apos;.implode(&apos;|(?:www\\.)?&apos;, $follow_list).&apos;))[^&quot;]+)&quot;((?!.*\\brel=)[^&gt;]*)(?:[^&gt;]*)&gt;
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-four" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/18/four/" class="article-date">
+      <time datetime="2015-09-18T12:05:08.000Z" itemprop="datePublished">2015-09-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/18/four/">使用Appirater为APP添加评分功能</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <hr>
+<h3 id="安装-Appirater"><a href="#安装-Appirater" class="headerlink" title="安装 Appirater"></a>安装 Appirater</h3><p>首先，我们要先使用 CocoaPods 来安装 Appirater 这个库，CocoaPods 是一个 Objective-c 的第三方套件管理工具，详细情况可以看 cocoapods 官网。在你的 iOS project 开发根目录下，创建一个叫做 Podfile 的档案(如果这是第一次使用 CocoaPods 的话)，并且在其中加入 Appirater 的 dependency ；  </p>
+<pre><code>&gt;pod &apos;Appirater&apos;  
+</code></pre><p>然后再执行pod install操作，CocoaPods就会帮你找到最新的版本并且安装。<br>需要在AppDelegate.m中导入 #import “Appirater.h”<br>然后在delegate的application:didFinishLaunchingWithOptions:<br>最后面，加入以下的代码:</p>
+<pre><code>[Appirater setAppId:@&quot;YOUR_APP_ID&quot;]; // 设定 App Id，使用者如果点击评分按钮的话，就会打开 AppStore，直接进入这个 App 頁面
+[Appirater setDaysUntilPrompt:1]; // 设定要使用多少天之后才跳出询问框
+[Appirater setUsesUntilPrompt:10]; //设定要使用多少次之后才跳出询问框
+[Appirater setSignificantEventsUntilPrompt:-1]; //设定使用者触发特定事件多少次之后才跳出
+[Appirater setTimeBeforeReminding:2]; //设定使用者选择&lt;稍后&gt;多少天之后再跳出
+[Appirater setDebug:YES]; //是否开启debug模式
+[Appirater appLaunched:YES]; //这行代码一定要放在这个方法的最后面
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-three" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/04/three/" class="article-date">
+      <time datetime="2015-09-04T02:25:08.000Z" itemprop="datePublished">2015-09-04</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/04/three/">iOS常用宏</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <hr>
+<pre><code>//字符串是否为空  
+#define kStringIsEmpty(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] &lt; 1 ? YES : NO )
+//数组是否为空  
+#define kArrayIsEmpty(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0)
+//字典是否为空  
+#define kDictIsEmpty(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0)
+//是否是空对象  
+#define kObjectIsEmpty(_object) (_object == nil \|| [_object isKindOfClass:[NSNull class]] \|| ([_object respondsToSelector:@selector(length)] &amp;&amp; [(NSData *)_object length] == 0) \|| ([_object respondsToSelector:@selector(count)] &amp;&amp; [(NSArray *)_object count] == 0))
+//获取屏幕宽度与高度  
+#define kScreenWidth \([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)] ? [UIScreen mainScreen].nativeBounds.size.width/[UIScreen mainScreen].nativeScale : [UIScreen mainScreen].bounds.size.width)
+#define kScreenHeight \([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)] ? [UIScreen mainScreen].nativeBounds.size.height/[UIScreen mainScreen].nativeScale : [UIScreen mainScreen].bounds.size.height)
+#define kScreenSize \([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)] ? CGSizeMake([UIScreen mainScreen].nativeBounds.size.width/[UIScreen mainScreen].nativeScale,[UIScreen mainScreen].nativeBounds.size.height/[UIScreen mainScreen].nativeScale) : [UIScreen mainScreen].bounds.size)
+//一些缩写
+#define kApplication [UIApplication sharedApplication]
+#define kKeyWindow [UIApplication sharedApplication].keyWindow
+#define kAppDelegate [UIApplication sharedApplication].delegate
+#define kUserDefaults [NSUserDefaults standardUserDefaults]
+#define kNotificationCenter [NSNotificationCenter defaultCenter]
+//APP版本号
+#define kAppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@&quot;CFBundleShortVersionString&quot;]
+//系统版本号
+#define kSystemVersion [[UIDevice currentDevice] systemVersion]
+//获取当前语言
+#define kCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
+//判断是否为iPhone
+#define kISiPhone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+//判断是否为iPad
+#define kISiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+//获取沙盒Document路径
+#define kDocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+//获取沙盒temp路径
+#define kTempPath NSTemporaryDirectory()
+//获取沙盒Cache路径
+#define kCachePath [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
+//判断是真机还是模拟器
+#if TARGET_OS_IPHONE
+//真机
+#endif
+#if TARGET_IPHONE_SIMULATOR
+//模拟器
+#endif
+//开发的时候打印，但是发布的时候不打印的NSLog
+#ifdef DEBUG
+#define NSLog(...) NSLog(@&quot;%s 第%d行 \n %@\n\n&quot;,__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#else
+#define NSLog(...)
+#endif
+//颜色
+#define kRGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define kRGBAColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(r)/255.0 blue:(r)/255.0 alpha:a]
+#define kRandomColor KRGBColor(arc4random_uniform(256)/255.0,arc4random_uniform(256)/255.0,arc4random_uniform(256)/255.0)
+#define kColorWithHex(rgbValue) \[UIColor colorWithRed:((float)((rgbValue &amp; 0xFF0000) &gt;&gt; 16)) / 255.0 \green:((float)((rgbValue &amp; 0xFF00) &gt;&gt; 8)) / 255.0 \blue:((float)(rgbValue &amp; 0xFF)) / 255.0 alpha:1.0]
+//弱引用/强引用
+#define kWeakSelf(type) __weak typeof(type) weak##type = type;
+#define kStrongSelf(type) __strong typeof(type) type = weak##type;
+//由角度转换弧度
+#define kDegreesToRadian(x) (M_PI * (x) / 180.0)
+//由弧度转换角度
+#define kRadianToDegrees(radian) (radian * 180.0) / (M_PI)
+//获取一段时间间隔
+#define kStartTime CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
+#define kEndTime NSLog(@&quot;Time: %f&quot;, CFAbsoluteTimeGetCurrent() - start)
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-two" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/30/two/" class="article-date">
+      <time datetime="2015-08-30T13:17:15.000Z" itemprop="datePublished">2015-08-30</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/30/two/">通过模态弹出视图的一些问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <hr>
+<blockquote>
+<p>present弹出的视图内有push操作</p>
+</blockquote>
+<pre><code>UINavigationController *nav = [UINavigationController alloc] initWithRootViewController:[NSClassFromString(@&quot;&quot;) new];
+[self presentViewController:nav animated:YES completion:nil];
+</code></pre><blockquote>
+<p>判断当期界面是通过present还是push</p>
+</blockquote>
+<pre><code>NSArray *Ctrls = self.navigationController.viewControllers;
+if (Ctrls.count &gt; 1) {
+     //push
+}else
+{
+     //presemt
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-one" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/22/one/" class="article-date">
+      <time datetime="2015-08-22T12:10:15.000Z" itemprop="datePublished">2015-08-22</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/22/one/">loadView、viewDidLoad及viewDidUnload的关系</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <hr>
+<p>三个方法的关系</p>
+<blockquote>
+<p> 1.第一次访问UIViewController的view时，view为nil，然后就会调用loadView方法创建view<br>2.view创建完毕后会调用viewDidLoad方法进行界面元素的初始化<br>3.当内存警告时，系统可能会释放UIViewController的view，将view赋值为nil，并且调用viewDidUnload方法<br>4.当再次访问UIViewController的view时，view已经在3中被赋值为nil，所以又会调用loadView方法重新创建view<br>5.view被重新创建完毕后，还是会调用viewDidLoad方法进行界面元素的初始化</p>
+</blockquote>
 
       
     </div>
@@ -214,7 +859,114 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开始/">开始</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-record" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/15/record/" class="article-date">
+      <time datetime="2015-08-15T02:46:46.000Z" itemprop="datePublished">2015-08-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/15/record/">苹果API常用的英文名词</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>欢迎来到<a href="https://xkCodeartisan.github.io" target="_blank" rel="external">xkCodeartisan</a>!一名iOS开发者。现在就职于北京某公司，在以后的开发中希望大家能一起交流。</p>
+<hr>
+<ul>
+<li>indicating 决定</li>
+<li>order to 以便</li>
+<li>rectangle bounds 矩形尺寸</li>
+<li>applied 应用</li>
+<li>entirety 全部</li>
+<li>technique 方法</li>
+<li>truncating 截短</li>
+<li>wrapping 换行</li>
+<li>string 字符串</li>
+<li>familiar style 简体</li>
+<li>The styled text 主题样式</li>
+<li>Constants 常量</li>
+<li>Attribute 属性</li>
+<li>Consecutive 连续</li>
+<li>Shrink 收缩</li>
+<li>Discussion 详述</li>
+<li>Rendering 渲染</li>
+<li>Pasting 粘贴</li>
+<li>Prohibits 禁止</li>
+<li>Albeit 虽然</li>
+<li>Particular 特殊的，详细的</li>
+<li>Specify 指定</li>
+<li>Times 次数</li>
+<li>In that order 在这个命令下</li>
+<li>Passing 传递</li>
+<li>Determines 决定</li>
+<li>Resize 调整大小</li>
+<li>Comprises 包含</li>
+<li>Positive 正数</li>
+<li>Negative 负数</li>
+<li>Reverse 反转</li>
+<li>Valid 有效的</li>
+<li>Configure 设定</li>
+<li>Instead 相反</li>
+<li>Primarily 主要</li>
+<li>Obvious 非常</li>
+<li>Divergence 区别</li>
+<li>Conceptual 概念</li>
+<li>The model-view-controller design pattern MVC</li>
+<li>clearly 明显</li>
+<li>encapsulate 封装</li>
+<li>transparent 透明</li>
+<li>opaque 不透明</li>
+<li>momentary 瞬间</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li></ul>
     </div>
 
       
@@ -240,96 +992,53 @@
     <div class="outer">
         <div id="footer-info">
             <div class="footer-left">
-                &copy; 2016 Kyle
+                <i class="fa fa-copyright"></i> 
+                2015-2016 Kyle
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >海贼到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>, </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
     </div>
 </footer>
-
     </div>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script src="/js/main.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var backgroundnum = 24;
-            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-        })
-    </script>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
 
 
 
 
 
 <div class="scroll" id="scroll">
-    <a href="#"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
-    $(document).ready(function() {
-        if ($("#comments").length < 1) {
-            $("#scroll > a:nth-child(2)").hide();
-        };
-    })
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
 </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
-
-  <script language="javascript">
-    $(function() {
-        $("a[title]").each(function() {
-            var a = $(this);
-            var title = a.attr('title');
-            if (title == undefined || title == "") return;
-            a.data('title', title).removeAttr('title').hover(
-
-            function() {
-                var offset = a.offset();
-                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
-                    top: offset.top - a.outerHeight() - 15,
-                    left: offset.left + a.outerWidth()/2 + 1
-                }).fadeIn(function() {
-                    var pop = $(this);
-                    setTimeout(function() {
-                        pop.remove();
-                    }, pop.text().length * 800);
-                });
-            }, function() {
-                $("#anchortitlecontainer").remove();
-            });
-        });
-    });
-</script>
-
-
   </div>
 </body>
 </html>
